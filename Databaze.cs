@@ -29,14 +29,39 @@ namespace semestralka_windows_forms
             zaznam_osoba.Remove(zaznam_osoba[index]);
         }
 
-        public void Zaplaceno(int index, int castka_pripravka, int castka_druzstva)
+        public void Zaplaceno(int index, int id, int castka, int castka_pripravka, int castka_druzstva)
         {
-            /*
-            if (index == 1)
-                if ( == castka_pripravka)
-
-            zaznam_osoba[index].zaplaceno = 1;
-            */
+            //Podle id rozhodne družstvo (lichá přípravka, sudá družstva)
+            //Test přípravka
+            if (id % 2 != 0)
+            {
+                //Zkontroluje, jestli odpovídá částka
+                if (castka == castka_pripravka)
+                {
+                    //Nastaví příznak na zaplaceno
+                    zaznam_osoba[index].zaplaceno = 1;
+                }
+                else
+                {
+                    //Nastaví na chybnou částku
+                    zaznam_osoba[index].zaplaceno = 2;
+                }
+            }
+            //Test družstva
+            else if (id % 2 == 0)
+            {
+                //Zkontroluje, jestli odpovídá částka
+                if (castka == castka_druzstva)
+                {
+                    //Nastaví příznak na zaplaceno
+                    zaznam_osoba[index].zaplaceno = 1;
+                }
+                else
+                {
+                    //Nastaví na chybnou částku
+                    zaznam_osoba[index].zaplaceno = 2;
+                }
+            }
         }
 
         public int Najdi(int id)
