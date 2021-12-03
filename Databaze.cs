@@ -29,7 +29,7 @@ namespace semestralka_windows_forms
             zaznam_osoba.Remove(zaznam_osoba[index]);
         }
 
-        public void Zaplaceno(int index, int id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
+        public void Zaplatil(int index, int id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
         {
             //Podle id rozhodne družstvo (lichá přípravka, sudá družstva)
             //Test přípravka
@@ -39,13 +39,13 @@ namespace semestralka_windows_forms
                 if (castka == castka_pripravka)
                 {
                     //Nastaví příznak na zaplaceno
-                    zaznam_osoba[index].zaplaceno = 1;
+                    zaznam_osoba[index].Zaplaceno = 1;
                     zaznam_osoba[index].Datum = datum;
                 }
                 else
                 {
                     //Nastaví na chybnou částku
-                    zaznam_osoba[index].zaplaceno = 2;
+                    zaznam_osoba[index].Zaplaceno = 2;
                     zaznam_osoba[index].Datum = datum;
                 }
             }
@@ -56,13 +56,13 @@ namespace semestralka_windows_forms
                 if (castka == castka_druzstva)
                 {
                     //Nastaví příznak na zaplaceno
-                    zaznam_osoba[index].zaplaceno = 1;
+                    zaznam_osoba[index].Zaplaceno = 1;
                     zaznam_osoba[index].Datum = datum;
                 }
                 else
                 {
                     //Nastaví na chybnou částku
-                    zaznam_osoba[index].zaplaceno = 2;
+                    zaznam_osoba[index].Zaplaceno = 2;
                     zaznam_osoba[index].Datum = datum;
                 }
             }
@@ -76,12 +76,24 @@ namespace semestralka_windows_forms
         public Osoba[] VratVybrane(int zaplaceno)
         {
             List<Osoba> vybrani = new List<Osoba>();
-            vybrani = zaznam_osoba.FindAll(os => os.zaplaceno == zaplaceno);
+            vybrani = zaznam_osoba.FindAll(os => os.Zaplaceno == zaplaceno);
             return vybrani.ToArray();
         }
         public Osoba[] VratVsechny()
         {
             return zaznam_osoba.ToArray();
+        }
+        public string[] VratEmail(int zaplaceno)
+        {
+            List<Osoba> vybrani = new List<Osoba>();
+            vybrani = zaznam_osoba.FindAll(os => os.Zaplaceno == zaplaceno);
+            string[] email = new string[vybrani.Count];
+            //spojí maily do jednoho řetězce s využitím středníku
+            for (int i = 0; i < vybrani.Count; i++)
+            {
+                email[i] = vybrani[i].Email + ";";
+            }
+            return email;
         }
         public void Uloz(string oddelovac)
         {
@@ -92,7 +104,7 @@ namespace semestralka_windows_forms
                 foreach (Osoba o in zaznam_osoba)
                 {
                     // vytvoření pole hodnot
-                    string[] hodnoty = { o.Jmeno, o.Prijmeni, o.Email, o.ID.ToString(), o.zaplaceno.ToString() };
+                    string[] hodnoty = { o.Jmeno, o.Prijmeni, o.Email, o.ID.ToString(), o.Zaplaceno.ToString() };
                     // vytvoření řádku
                     string radek = String.Join(oddelovac, hodnoty);
                     // zápis řádku
