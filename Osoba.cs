@@ -14,6 +14,7 @@ namespace semestralka_windows_forms
         public uint ID { get; private set; }
         //0 == nezaplaceno; 1 == zaplaceno; 2 == spatna castka
         public int zaplaceno { get;  set; }
+        public DateTime Datum { get; set; }
 
         public Osoba(string jmeno, string prijmeni, string email, uint id, int zaplaceno)
         {

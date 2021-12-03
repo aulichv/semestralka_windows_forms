@@ -29,7 +29,7 @@ namespace semestralka_windows_forms
             zaznam_osoba.Remove(zaznam_osoba[index]);
         }
 
-        public void Zaplaceno(int index, int id, int castka, int castka_pripravka, int castka_druzstva)
+        public void Zaplaceno(int index, int id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
         {
             //Podle id rozhodne družstvo (lichá přípravka, sudá družstva)
             //Test přípravka
@@ -40,11 +40,13 @@ namespace semestralka_windows_forms
                 {
                     //Nastaví příznak na zaplaceno
                     zaznam_osoba[index].zaplaceno = 1;
+                    zaznam_osoba[index].Datum = datum;
                 }
                 else
                 {
                     //Nastaví na chybnou částku
                     zaznam_osoba[index].zaplaceno = 2;
+                    zaznam_osoba[index].Datum = datum;
                 }
             }
             //Test družstva
@@ -55,11 +57,13 @@ namespace semestralka_windows_forms
                 {
                     //Nastaví příznak na zaplaceno
                     zaznam_osoba[index].zaplaceno = 1;
+                    zaznam_osoba[index].Datum = datum;
                 }
                 else
                 {
                     //Nastaví na chybnou částku
                     zaznam_osoba[index].zaplaceno = 2;
+                    zaznam_osoba[index].Datum = datum;
                 }
             }
         }
