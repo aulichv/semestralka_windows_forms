@@ -18,6 +18,5 @@ namespace semestralka_windows_forms
             InitializeComponent();
             
         }
-        
     }
 }
