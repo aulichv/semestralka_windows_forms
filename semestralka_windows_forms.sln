@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "semestralka_windows_forms", "semestralka_windows_forms.csproj", "{5CAA8144-48E7-4AC1-AEF2-2D3DDE016A0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CAA8144-48E7-4AC1-AEF2-2D3DDE016A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CAA8144-48E7-4AC1-AEF2-2D3DDE016A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CAA8144-48E7-4AC1-AEF2-2D3DDE016A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CAA8144-48E7-4AC1-AEF2-2D3DDE016A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA9CF6CB-317F-4D54-A921-1D18711428D8}
+	EndGlobalSection
+EndGlobal
