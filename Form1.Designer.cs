@@ -95,31 +95,39 @@ namespace semestralka_windows_forms
             this.button8 = new System.Windows.Forms.Button();
             this.listBox_nezaplaceno = new System.Windows.Forms.ListBox();
             this.lbl_nezaplaceno_tabulka = new System.Windows.Forms.Label();
-            this.groupBox_detail_nezaplaceno = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.listBox_chyba = new System.Windows.Forms.ListBox();
             this.lbl_chyba_tabulka = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_chybna_castka = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbl_skupina_nezaplaceno = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lbl_id_nezaplaceno = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.lbl_prijmeni_nezaplaceno = new System.Windows.Forms.Label();
+            this.lbl_email_nezaplaceni = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.lbl_jmeno_nezaplaceno = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbl_skupina_chyba = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbl_id_chyba = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbl_prijmeni_chyba = new System.Windows.Forms.Label();
+            this.lbl_datum_chyba = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lbl_email_chyba = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lbl_jmeno_chyba = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbl_castka_chyba = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -130,10 +138,10 @@ namespace semestralka_windows_forms
             this.tabPage2.SuspendLayout();
             this.groupBox_detail_zaplaceno.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox_detail_nezaplaceno.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_import_banka
@@ -418,7 +426,7 @@ namespace semestralka_windows_forms
             this.groupBox_pridat_vsichni.Size = new System.Drawing.Size(201, 231);
             this.groupBox_pridat_vsichni.TabIndex = 14;
             this.groupBox_pridat_vsichni.TabStop = false;
-            this.groupBox_pridat_vsichni.Text = "groupBox4";
+            this.groupBox_pridat_vsichni.Text = "Přidat novou osobu";
             // 
             // radioButton_nezaplaceno
             // 
@@ -707,13 +715,13 @@ namespace semestralka_windows_forms
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.lbl_email_nezaplaceno);
             this.tabPage3.Controls.Add(this.textBox_nezaplaceno);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.button8);
             this.tabPage3.Controls.Add(this.listBox_nezaplaceno);
             this.tabPage3.Controls.Add(this.lbl_nezaplaceno_tabulka);
-            this.tabPage3.Controls.Add(this.groupBox_detail_nezaplaceno);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -765,6 +773,7 @@ namespace semestralka_windows_forms
             this.listBox_nezaplaceno.Size = new System.Drawing.Size(249, 316);
             this.listBox_nezaplaceno.Sorted = true;
             this.listBox_nezaplaceno.TabIndex = 11;
+            this.listBox_nezaplaceno.SelectedIndexChanged += new System.EventHandler(this.listBox_nezaplaceno_SelectedIndexChanged);
             // 
             // lbl_nezaplaceno_tabulka
             // 
@@ -775,92 +784,13 @@ namespace semestralka_windows_forms
             this.lbl_nezaplaceno_tabulka.TabIndex = 12;
             this.lbl_nezaplaceno_tabulka.Text = "Seznam osob:";
             // 
-            // groupBox_detail_nezaplaceno
-            // 
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label3);
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label11);
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label12);
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label13);
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label14);
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label15);
-            this.groupBox_detail_nezaplaceno.Controls.Add(this.label16);
-            this.groupBox_detail_nezaplaceno.Location = new System.Drawing.Point(282, 61);
-            this.groupBox_detail_nezaplaceno.Name = "groupBox_detail_nezaplaceno";
-            this.groupBox_detail_nezaplaceno.Size = new System.Drawing.Size(201, 316);
-            this.groupBox_detail_nezaplaceno.TabIndex = 13;
-            this.groupBox_detail_nezaplaceno.TabStop = false;
-            this.groupBox_detail_nezaplaceno.Text = "Detail vybrané osoby:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 153);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "label3";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 153);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "label11";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 140);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "label12";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 106);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "label13";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 93);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "label14";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "label15";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 28);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 13);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "label16";
-            // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.groupBox3);
             this.tabPage5.Controls.Add(this.listBox_chyba);
             this.tabPage5.Controls.Add(this.lbl_chyba_tabulka);
-            this.tabPage5.Controls.Add(this.groupBox1);
             this.tabPage5.Controls.Add(this.label38);
-            this.tabPage5.Controls.Add(this.textBox1);
+            this.tabPage5.Controls.Add(this.textBox_chybna_castka);
             this.tabPage5.Controls.Add(this.button4);
             this.tabPage5.Controls.Add(this.button11);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -879,6 +809,7 @@ namespace semestralka_windows_forms
             this.listBox_chyba.Size = new System.Drawing.Size(249, 316);
             this.listBox_chyba.Sorted = true;
             this.listBox_chyba.TabIndex = 19;
+            this.listBox_chyba.SelectedIndexChanged += new System.EventHandler(this.listBox_chyba_SelectedIndexChanged);
             // 
             // lbl_chyba_tabulka
             // 
@@ -889,85 +820,6 @@ namespace semestralka_windows_forms
             this.lbl_chyba_tabulka.TabIndex = 20;
             this.lbl_chyba_tabulka.Text = "Seznam osob:";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label32);
-            this.groupBox1.Controls.Add(this.label33);
-            this.groupBox1.Controls.Add(this.label35);
-            this.groupBox1.Controls.Add(this.label36);
-            this.groupBox1.Controls.Add(this.label37);
-            this.groupBox1.Location = new System.Drawing.Point(281, 59);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(201, 316);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Detail vybrané osoby:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 153);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "label2";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 153);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 13);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "label17";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 140);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(41, 13);
-            this.label32.TabIndex = 12;
-            this.label32.Text = "label32";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(6, 106);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(41, 13);
-            this.label33.TabIndex = 11;
-            this.label33.Text = "label33";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(6, 93);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(41, 13);
-            this.label35.TabIndex = 10;
-            this.label35.Text = "label35";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(6, 47);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(41, 13);
-            this.label36.TabIndex = 9;
-            this.label36.Text = "label36";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(6, 28);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(41, 13);
-            this.label37.TabIndex = 8;
-            this.label37.Text = "label37";
-            // 
             // label38
             // 
             this.label38.AutoSize = true;
@@ -977,13 +829,13 @@ namespace semestralka_windows_forms
             this.label38.TabIndex = 25;
             this.label38.Text = "Seznam emailů:";
             // 
-            // textBox1
+            // textBox_chybna_castka
             // 
-            this.textBox1.Location = new System.Drawing.Point(499, 69);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(262, 266);
-            this.textBox1.TabIndex = 24;
+            this.textBox_chybna_castka.Location = new System.Drawing.Point(499, 69);
+            this.textBox_chybna_castka.Multiline = true;
+            this.textBox_chybna_castka.Name = "textBox_chybna_castka";
+            this.textBox_chybna_castka.Size = new System.Drawing.Size(262, 266);
+            this.textBox_chybna_castka.TabIndex = 24;
             // 
             // button4
             // 
@@ -1022,6 +874,244 @@ namespace semestralka_windows_forms
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lbl_skupina_nezaplaceno);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.lbl_id_nezaplaceno);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.lbl_prijmeni_nezaplaceno);
+            this.groupBox2.Controls.Add(this.lbl_email_nezaplaceni);
+            this.groupBox2.Controls.Add(this.label41);
+            this.groupBox2.Controls.Add(this.lbl_jmeno_nezaplaceno);
+            this.groupBox2.Controls.Add(this.label43);
+            this.groupBox2.Location = new System.Drawing.Point(282, 61);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(201, 316);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detail vybrané osoby:";
+            // 
+            // lbl_skupina_nezaplaceno
+            // 
+            this.lbl_skupina_nezaplaceno.AutoSize = true;
+            this.lbl_skupina_nezaplaceno.Location = new System.Drawing.Point(6, 176);
+            this.lbl_skupina_nezaplaceno.Name = "lbl_skupina_nezaplaceno";
+            this.lbl_skupina_nezaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_nezaplaceno.TabIndex = 19;
+            this.lbl_skupina_nezaplaceno.Text = "label7";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 163);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(46, 13);
+            this.label23.TabIndex = 18;
+            this.label23.Text = "Skupina";
+            // 
+            // lbl_id_nezaplaceno
+            // 
+            this.lbl_id_nezaplaceno.AutoSize = true;
+            this.lbl_id_nezaplaceno.Location = new System.Drawing.Point(6, 133);
+            this.lbl_id_nezaplaceno.Name = "lbl_id_nezaplaceno";
+            this.lbl_id_nezaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_nezaplaceno.TabIndex = 17;
+            this.lbl_id_nezaplaceno.Text = "label7";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 120);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(18, 13);
+            this.label26.TabIndex = 16;
+            this.label26.Text = "ID";
+            // 
+            // lbl_prijmeni_nezaplaceno
+            // 
+            this.lbl_prijmeni_nezaplaceno.AutoSize = true;
+            this.lbl_prijmeni_nezaplaceno.Location = new System.Drawing.Point(101, 47);
+            this.lbl_prijmeni_nezaplaceno.Name = "lbl_prijmeni_nezaplaceno";
+            this.lbl_prijmeni_nezaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_nezaplaceno.TabIndex = 15;
+            this.lbl_prijmeni_nezaplaceno.Text = "label4";
+            // 
+            // lbl_email_nezaplaceni
+            // 
+            this.lbl_email_nezaplaceni.AutoSize = true;
+            this.lbl_email_nezaplaceni.Location = new System.Drawing.Point(6, 90);
+            this.lbl_email_nezaplaceni.Name = "lbl_email_nezaplaceni";
+            this.lbl_email_nezaplaceni.Size = new System.Drawing.Size(41, 13);
+            this.lbl_email_nezaplaceni.TabIndex = 11;
+            this.lbl_email_nezaplaceni.Text = "label21";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(6, 77);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(32, 13);
+            this.label41.TabIndex = 10;
+            this.label41.Text = "Email";
+            // 
+            // lbl_jmeno_nezaplaceno
+            // 
+            this.lbl_jmeno_nezaplaceno.AutoSize = true;
+            this.lbl_jmeno_nezaplaceno.Location = new System.Drawing.Point(6, 47);
+            this.lbl_jmeno_nezaplaceno.Name = "lbl_jmeno_nezaplaceno";
+            this.lbl_jmeno_nezaplaceno.Size = new System.Drawing.Size(41, 13);
+            this.lbl_jmeno_nezaplaceno.TabIndex = 9;
+            this.lbl_jmeno_nezaplaceno.Text = "label23";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 28);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(90, 13);
+            this.label43.TabIndex = 8;
+            this.label43.Text = "Jméno a příjmení";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.lbl_castka_chyba);
+            this.groupBox3.Controls.Add(this.lbl_skupina_chyba);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.lbl_id_chyba);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.lbl_prijmeni_chyba);
+            this.groupBox3.Controls.Add(this.lbl_datum_chyba);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.lbl_email_chyba);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.lbl_jmeno_chyba);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Location = new System.Drawing.Point(281, 59);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(201, 316);
+            this.groupBox3.TabIndex = 26;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Detail vybrané osoby:";
+            // 
+            // lbl_skupina_chyba
+            // 
+            this.lbl_skupina_chyba.AutoSize = true;
+            this.lbl_skupina_chyba.Location = new System.Drawing.Point(6, 176);
+            this.lbl_skupina_chyba.Name = "lbl_skupina_chyba";
+            this.lbl_skupina_chyba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_chyba.TabIndex = 19;
+            this.lbl_skupina_chyba.Text = "label7";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 163);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Skupina";
+            // 
+            // lbl_id_chyba
+            // 
+            this.lbl_id_chyba.AutoSize = true;
+            this.lbl_id_chyba.Location = new System.Drawing.Point(6, 133);
+            this.lbl_id_chyba.Name = "lbl_id_chyba";
+            this.lbl_id_chyba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_chyba.TabIndex = 17;
+            this.lbl_id_chyba.Text = "label7";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 120);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "ID";
+            // 
+            // lbl_prijmeni_chyba
+            // 
+            this.lbl_prijmeni_chyba.AutoSize = true;
+            this.lbl_prijmeni_chyba.Location = new System.Drawing.Point(101, 47);
+            this.lbl_prijmeni_chyba.Name = "lbl_prijmeni_chyba";
+            this.lbl_prijmeni_chyba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_chyba.TabIndex = 15;
+            this.lbl_prijmeni_chyba.Text = "label4";
+            // 
+            // lbl_datum_chyba
+            // 
+            this.lbl_datum_chyba.AutoSize = true;
+            this.lbl_datum_chyba.Location = new System.Drawing.Point(81, 203);
+            this.lbl_datum_chyba.Name = "lbl_datum_chyba";
+            this.lbl_datum_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_datum_chyba.TabIndex = 14;
+            this.lbl_datum_chyba.Text = "label18";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 203);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 13);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Datum platby";
+            // 
+            // lbl_email_chyba
+            // 
+            this.lbl_email_chyba.AutoSize = true;
+            this.lbl_email_chyba.Location = new System.Drawing.Point(6, 90);
+            this.lbl_email_chyba.Name = "lbl_email_chyba";
+            this.lbl_email_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_email_chyba.TabIndex = 11;
+            this.lbl_email_chyba.Text = "label21";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 77);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 13);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Email";
+            // 
+            // lbl_jmeno_chyba
+            // 
+            this.lbl_jmeno_chyba.AutoSize = true;
+            this.lbl_jmeno_chyba.Location = new System.Drawing.Point(6, 47);
+            this.lbl_jmeno_chyba.Name = "lbl_jmeno_chyba";
+            this.lbl_jmeno_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_jmeno_chyba.TabIndex = 9;
+            this.lbl_jmeno_chyba.Text = "label23";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 28);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(90, 13);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "Jméno a příjmení";
+            // 
+            // lbl_castka_chyba
+            // 
+            this.lbl_castka_chyba.AutoSize = true;
+            this.lbl_castka_chyba.Location = new System.Drawing.Point(81, 237);
+            this.lbl_castka_chyba.Name = "lbl_castka_chyba";
+            this.lbl_castka_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_castka_chyba.TabIndex = 20;
+            this.lbl_castka_chyba.Text = "label18";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 237);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Částka";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1048,13 +1138,13 @@ namespace semestralka_windows_forms
             this.groupBox_detail_zaplaceno.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox_detail_nezaplaceno.ResumeLayout(false);
-            this.groupBox_detail_nezaplaceno.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1095,14 +1185,6 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ListBox listBox_nezaplaceno;
         private System.Windows.Forms.Label lbl_nezaplaceno_tabulka;
-        private System.Windows.Forms.GroupBox groupBox_detail_nezaplaceno;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button_odebrat_databaze;
         private System.Windows.Forms.GroupBox groupBox_pridat_vsichni;
         private System.Windows.Forms.Label label27;
@@ -1119,16 +1201,8 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ListBox listBox_chyba;
         private System.Windows.Forms.Label lbl_chyba_tabulka;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_chybna_castka;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label lbl_prijmeni_vsichni;
@@ -1151,6 +1225,30 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.RadioButton radioButton_zaplaceno;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lbl_skupina_nezaplaceno;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lbl_id_nezaplaceno;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lbl_prijmeni_nezaplaceno;
+        private System.Windows.Forms.Label lbl_email_nezaplaceni;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label lbl_jmeno_nezaplaceno;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_castka_chyba;
+        private System.Windows.Forms.Label lbl_skupina_chyba;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbl_id_chyba;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbl_prijmeni_chyba;
+        private System.Windows.Forms.Label lbl_datum_chyba;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbl_email_chyba;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbl_jmeno_chyba;
+        private System.Windows.Forms.Label label19;
     }
 }
 

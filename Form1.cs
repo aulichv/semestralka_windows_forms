@@ -84,7 +84,7 @@ namespace semestralka_windows_forms
                     lbl_platba.Text = "Zaplaceno";
                     lbl_platba_datum_vsichni.Text = u.Datum.ToShortDateString();
                 }
-                else if (u.Zaplaceno == 0)
+                else if (u.Zaplaceno == 2)
                 {
                     lbl_platba.Text = "Zaplacena chybná částka";
                     lbl_platba_datum_vsichni.Text = u.Datum.ToShortDateString();
@@ -109,7 +109,7 @@ namespace semestralka_windows_forms
 
         private void button_odebrat_databaze_Click(object sender, EventArgs e)
         {
-            if (listBox_vsichni.SelectedIndex > 0)
+            if (listBox_vsichni.SelectedIndex >= 0)
             {
                 databaze.OdeberOsobu(listBox_vsichni.SelectedIndex);
                 listBox_vsichni.Items.RemoveAt(listBox_vsichni.SelectedIndex);
@@ -123,7 +123,7 @@ namespace semestralka_windows_forms
         {
             try
             {
-                databaze.Uloz(',');
+                databaze.Uloz(';');
             }
             catch
             {
@@ -141,7 +141,7 @@ namespace semestralka_windows_forms
                 Osoba u = (Osoba)listBox_vsichni.SelectedItem;
                 lbl_jmeno_zaplaceno.Text = u.Jmeno;
                 lbl_prijmeni_zaplaceno.Text = u.Prijmeni;
-                lbl_email_zaplaceno.Text = u.Email;
+                lbl_email_zaplaceni.Text = u.Email;
                 lbl_id_zaplaceno.Text = u.ID.ToString();
                 //Zobrazení skupiny (rozhodnutí podle id)
                 if (u.ID % 2 == 0)
@@ -164,20 +164,60 @@ namespace semestralka_windows_forms
             {
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
-                databaze.Nacti2(',',path);
+                databaze.Nacti2(';',path);
                 //Výplň listboxu všichni
                 listBox_vsichni.Items.Clear();
                 listBox_vsichni.Items.AddRange(databaze.VratVsechny());
-                //Výplň listboxu zaplaceno
+                //Výplň listboxu zaplaceno + seznam mailů
                 listBox_zaplaceno.Items.Clear();
                 listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
-                //Výplň listboxu nezaplaceno
+                textBox_zaplaceno.Text = string.Join(";", databaze.VratEmail(1));
+                //Výplň listboxu nezaplaceno + seznam mailů
                 listBox_nezaplaceno.Items.Clear();
                 listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
-                //Výplň listboxu chybí
+                textBox_nezaplaceno.Text = string.Join(";", databaze.VratEmail(0));
+                //Výplň listboxu chybí + seznam mailů
                 listBox_chyba.Items.Clear();
-                listBox_chyba.Items.AddRange(databaze.VratVybrane(3));
+                listBox_chyba.Items.AddRange(databaze.VratVybrane(2));
+                textBox_chybna_castka.Text = string.Join(";",databaze.VratEmail(2));
+            }
+        }
 
+        private void listBox_chyba_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox_vsichni.SelectedItem != null)
+            {
+                //Zobrazeni detailu vybrane osoby
+                Osoba u = (Osoba)listBox_vsichni.SelectedItem;
+                lbl_jmeno_chyba.Text = u.Jmeno;
+                lbl_prijmeni_chyba.Text = u.Prijmeni;
+                lbl_email_chyba.Text = u.Email;
+                lbl_id_chyba.Text = u.ID.ToString();
+                //Zobrazení skupiny (rozhodnutí podle id)
+                if (u.ID % 2 == 0)
+                    lbl_skupina_chyba.Text = "Družstva";
+                else if (u.ID % 2 != 0)
+                    lbl_skupina_chyba.Text = "Přípravka";
+                lbl_datum_chyba.Text = u.Datum.ToShortDateString();
+                lbl_castka_chyba.Text = u.Castka.ToString();
+            }
+        }
+
+        private void listBox_nezaplaceno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox_vsichni.SelectedItem != null)
+            {
+                //Zobrazeni detailu vybrane osoby
+                Osoba u = (Osoba)listBox_vsichni.SelectedItem;
+                lbl_jmeno_nezaplaceno.Text = u.Jmeno;
+                lbl_prijmeni_nezaplaceno.Text = u.Prijmeni;
+                lbl_email_nezaplaceni.Text = u.Email;
+                lbl_id_nezaplaceno.Text = u.ID.ToString();
+                //Zobrazení skupiny (rozhodnutí podle id)
+                if (u.ID % 2 == 0)
+                    lbl_skupina_nezaplaceno.Text = "Družstva";
+                else if (u.ID % 2 != 0)
+                    lbl_skupina_nezaplaceno.Text = "Přípravka";
             }
         }
     }

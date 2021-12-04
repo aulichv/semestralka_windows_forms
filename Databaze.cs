@@ -64,6 +64,7 @@ namespace semestralka_windows_forms
                     //Nastaví na chybnou částku
                     zaznam_osoba[index].Zaplaceno = 2;
                     zaznam_osoba[index].Datum = datum;
+                    zaznam_osoba[index].Castka = castka;
                 }
             }
         }
@@ -91,7 +92,7 @@ namespace semestralka_windows_forms
             //spojí maily do jednoho řetězce s využitím středníku
             for (int i = 0; i < vybrani.Count; i++)
             {
-                email[i] = vybrani[i].Email + ";";
+                email[i] = vybrani[i].Email;
             }
             return email;
         }
