@@ -116,6 +116,9 @@ namespace semestralka_windows_forms
             this.lbl_skupina_zaplaceno = new System.Windows.Forms.Label();
             this.button_uloz_vsichni = new System.Windows.Forms.Button();
             this.numericUpDown_id_vsichni = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.radioButton_zaplaceno = new System.Windows.Forms.RadioButton();
+            this.radioButton_nezaplaceno = new System.Windows.Forms.RadioButton();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -204,11 +207,12 @@ namespace semestralka_windows_forms
             this.button_odebrat_databaze.TabIndex = 15;
             this.button_odebrat_databaze.Text = "Odeber osobu";
             this.button_odebrat_databaze.UseVisualStyleBackColor = true;
+            this.button_odebrat_databaze.Click += new System.EventHandler(this.button_odebrat_databaze_Click);
             // 
             // lbl_platba_datum_vsichni
             // 
             this.lbl_platba_datum_vsichni.AutoSize = true;
-            this.lbl_platba_datum_vsichni.Location = new System.Drawing.Point(100, 169);
+            this.lbl_platba_datum_vsichni.Location = new System.Drawing.Point(135, 169);
             this.lbl_platba_datum_vsichni.Name = "lbl_platba_datum_vsichni";
             this.lbl_platba_datum_vsichni.Size = new System.Drawing.Size(41, 13);
             this.lbl_platba_datum_vsichni.TabIndex = 14;
@@ -332,6 +336,9 @@ namespace semestralka_windows_forms
             // 
             // groupBox_pridat_vsichni
             // 
+            this.groupBox_pridat_vsichni.Controls.Add(this.radioButton_nezaplaceno);
+            this.groupBox_pridat_vsichni.Controls.Add(this.radioButton_zaplaceno);
+            this.groupBox_pridat_vsichni.Controls.Add(this.label7);
             this.groupBox_pridat_vsichni.Controls.Add(this.numericUpDown_id_vsichni);
             this.groupBox_pridat_vsichni.Controls.Add(this.label1);
             this.groupBox_pridat_vsichni.Controls.Add(this.textBox_email_vsichni);
@@ -435,6 +442,7 @@ namespace semestralka_windows_forms
             this.listBox_zaplaceno.Size = new System.Drawing.Size(249, 316);
             this.listBox_zaplaceno.Sorted = true;
             this.listBox_zaplaceno.TabIndex = 11;
+            this.listBox_zaplaceno.SelectedIndexChanged += new System.EventHandler(this.listBox_zaplaceno_SelectedIndexChanged);
             // 
             // lbl_zaplaceno_tabulka
             // 
@@ -974,10 +982,41 @@ namespace semestralka_windows_forms
             // 
             // numericUpDown_id_vsichni
             // 
-            this.numericUpDown_id_vsichni.Location = new System.Drawing.Point(62, 140);
+            this.numericUpDown_id_vsichni.Location = new System.Drawing.Point(62, 133);
             this.numericUpDown_id_vsichni.Name = "numericUpDown_id_vsichni";
             this.numericUpDown_id_vsichni.Size = new System.Drawing.Size(133, 20);
             this.numericUpDown_id_vsichni.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 169);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Zaplaceno";
+            // 
+            // radioButton_zaplaceno
+            // 
+            this.radioButton_zaplaceno.AutoSize = true;
+            this.radioButton_zaplaceno.Location = new System.Drawing.Point(71, 169);
+            this.radioButton_zaplaceno.Name = "radioButton_zaplaceno";
+            this.radioButton_zaplaceno.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_zaplaceno.TabIndex = 21;
+            this.radioButton_zaplaceno.TabStop = true;
+            this.radioButton_zaplaceno.Text = "ANO";
+            this.radioButton_zaplaceno.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_nezaplaceno
+            // 
+            this.radioButton_nezaplaceno.AutoSize = true;
+            this.radioButton_nezaplaceno.Location = new System.Drawing.Point(126, 169);
+            this.radioButton_nezaplaceno.Name = "radioButton_nezaplaceno";
+            this.radioButton_nezaplaceno.Size = new System.Drawing.Size(40, 17);
+            this.radioButton_nezaplaceno.TabIndex = 22;
+            this.radioButton_nezaplaceno.TabStop = true;
+            this.radioButton_nezaplaceno.Text = "NE";
+            this.radioButton_nezaplaceno.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1105,6 +1144,9 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button_uloz_vsichni;
         private System.Windows.Forms.NumericUpDown numericUpDown_id_vsichni;
+        private System.Windows.Forms.RadioButton radioButton_nezaplaceno;
+        private System.Windows.Forms.RadioButton radioButton_zaplaceno;
+        private System.Windows.Forms.Label label7;
     }
 }
 

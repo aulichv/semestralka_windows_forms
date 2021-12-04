@@ -26,7 +26,7 @@ namespace semestralka_windows_forms
 
         public void OdeberOsobu(int index)
         {
-            zaznam_osoba.Remove(zaznam_osoba[index]);
+            zaznam_osoba.RemoveAt(index);
         }
 
         public void Zaplatil(int index, int id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
