@@ -24,6 +24,8 @@ namespace semestralka_windows_forms
             Email = email;
             ID = id;
             Zaplaceno = zaplaceno;
+            Datum = default;
+            Castka = 0;
         }
 
         public override string ToString()

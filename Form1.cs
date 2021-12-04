@@ -148,7 +148,7 @@ namespace semestralka_windows_forms
                     lbl_skupina_zaplaceno.Text = "Družstva";
                 else if (u.ID % 2 != 0)
                     lbl_skupina_zaplaceno.Text = "Přípravka";
-                lbl_platba_datum_vsichni.Text = u.Datum.ToShortDateString();
+                lbl_datum_platba_zaplaceno.Text = u.Datum.ToShortDateString();
             }
         }
 
