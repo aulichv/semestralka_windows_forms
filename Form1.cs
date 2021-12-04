@@ -38,7 +38,7 @@ namespace semestralka_windows_forms
         {
             try
             {
-                databaze.Nacti(';');
+                databaze.Nacti(',');
                 listBox_vsichni.Items.Clear();
                 listBox_vsichni.Items.AddRange(databaze.VratVsechny());
             }
@@ -62,6 +62,30 @@ namespace semestralka_windows_forms
                     lbl_skupina_vsichni.Text = "Družstva";
                 else if (u.ID % 2 != 0)
                     lbl_skupina_vsichni.Text = "Přípravka";
+            }
+        }
+
+        private void button_pridat_databaze_Click(object sender, EventArgs e)
+        {
+            string jmeno = textBox_jmeno_vsichni.Text;
+            string prijmeni = textBox_prijmeni_vsichni.Text;
+            string email = textBox_email_vsichni.Text;
+            uint id = (uint)numericUpDown_id_vsichni.Value;
+            databaze.PridejOsobu(jmeno, prijmeni, email, id, 0);
+            listBox_vsichni.Items.Add(new Osoba(jmeno, prijmeni, email, id, 0));
+        }
+
+        private void button_uloz_vsichni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                databaze.Uloz(",");
+            }
+            catch
+            {
+                MessageBox.Show("Databázi se nepodařilo uložit, zkontrolujte přístupová práva k souboru.",
+                    "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }

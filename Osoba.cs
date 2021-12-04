@@ -15,7 +15,7 @@ namespace semestralka_windows_forms
         //0 == nezaplaceno; 1 == zaplaceno; 2 == spatna castka
         public int Zaplaceno { get;  set; }
         public DateTime Datum { get; set; }
-
+ 
         public Osoba(string jmeno, string prijmeni, string email, uint id, int zaplaceno)
         {
             Jmeno = jmeno;
@@ -23,6 +23,11 @@ namespace semestralka_windows_forms
             Email = email;
             ID = id;
             Zaplaceno = zaplaceno;
+        }
+
+        public override string ToString()
+        {
+            return Prijmeni + " " + Jmeno;
         }
     }
 }

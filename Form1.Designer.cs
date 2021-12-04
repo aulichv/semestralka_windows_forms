@@ -105,7 +105,6 @@ namespace semestralka_windows_forms
             this.textBox_prijmeni_vsichni = new System.Windows.Forms.TextBox();
             this.textBox_email_vsichni = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox_id_vsichni = new System.Windows.Forms.TextBox();
             this.lbl_prijmeni_zaplaceno = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_id_vsichni = new System.Windows.Forms.Label();
@@ -115,6 +114,8 @@ namespace semestralka_windows_forms
             this.lbl_id_zaplaceno = new System.Windows.Forms.Label();
             this.Skupina = new System.Windows.Forms.Label();
             this.lbl_skupina_zaplaceno = new System.Windows.Forms.Label();
+            this.button_uloz_vsichni = new System.Windows.Forms.Button();
+            this.numericUpDown_id_vsichni = new System.Windows.Forms.NumericUpDown();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -128,6 +129,7 @@ namespace semestralka_windows_forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -274,6 +276,7 @@ namespace semestralka_windows_forms
             this.button_pridat_databaze.TabIndex = 12;
             this.button_pridat_databaze.Text = "Přidej osobu";
             this.button_pridat_databaze.UseVisualStyleBackColor = true;
+            this.button_pridat_databaze.Click += new System.EventHandler(this.button_pridat_databaze_Click);
             // 
             // tabControl1
             // 
@@ -314,6 +317,7 @@ namespace semestralka_windows_forms
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button_uloz_vsichni);
             this.tabPage1.Controls.Add(this.groupBox_pridat_vsichni);
             this.tabPage1.Controls.Add(this.listBox_vsichni);
             this.tabPage1.Controls.Add(this.lbl_vsichni_tabulka);
@@ -328,7 +332,7 @@ namespace semestralka_windows_forms
             // 
             // groupBox_pridat_vsichni
             // 
-            this.groupBox_pridat_vsichni.Controls.Add(this.textBox_id_vsichni);
+            this.groupBox_pridat_vsichni.Controls.Add(this.numericUpDown_id_vsichni);
             this.groupBox_pridat_vsichni.Controls.Add(this.label1);
             this.groupBox_pridat_vsichni.Controls.Add(this.textBox_email_vsichni);
             this.groupBox_pridat_vsichni.Controls.Add(this.textBox_prijmeni_vsichni);
@@ -877,13 +881,6 @@ namespace semestralka_windows_forms
             this.label1.TabIndex = 16;
             this.label1.Text = "ID";
             // 
-            // textBox_id_vsichni
-            // 
-            this.textBox_id_vsichni.Location = new System.Drawing.Point(62, 137);
-            this.textBox_id_vsichni.Name = "textBox_id_vsichni";
-            this.textBox_id_vsichni.Size = new System.Drawing.Size(133, 20);
-            this.textBox_id_vsichni.TabIndex = 17;
-            // 
             // lbl_prijmeni_zaplaceno
             // 
             this.lbl_prijmeni_zaplaceno.AutoSize = true;
@@ -965,6 +962,23 @@ namespace semestralka_windows_forms
             this.lbl_skupina_zaplaceno.TabIndex = 19;
             this.lbl_skupina_zaplaceno.Text = "label7";
             // 
+            // button_uloz_vsichni
+            // 
+            this.button_uloz_vsichni.Location = new System.Drawing.Point(659, 354);
+            this.button_uloz_vsichni.Name = "button_uloz_vsichni";
+            this.button_uloz_vsichni.Size = new System.Drawing.Size(75, 23);
+            this.button_uloz_vsichni.TabIndex = 16;
+            this.button_uloz_vsichni.Text = "Ulož";
+            this.button_uloz_vsichni.UseVisualStyleBackColor = true;
+            this.button_uloz_vsichni.Click += new System.EventHandler(this.button_uloz_vsichni_Click);
+            // 
+            // numericUpDown_id_vsichni
+            // 
+            this.numericUpDown_id_vsichni.Location = new System.Drawing.Point(62, 140);
+            this.numericUpDown_id_vsichni.Name = "numericUpDown_id_vsichni";
+            this.numericUpDown_id_vsichni.Size = new System.Drawing.Size(133, 20);
+            this.numericUpDown_id_vsichni.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -997,6 +1011,7 @@ namespace semestralka_windows_forms
             this.tabPage5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1076,7 +1091,6 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label lbl_prijmeni_vsichni;
         private System.Windows.Forms.TextBox textBox_jmeno_vsichni;
-        private System.Windows.Forms.TextBox textBox_id_vsichni;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_email_vsichni;
         private System.Windows.Forms.TextBox textBox_prijmeni_vsichni;
@@ -1089,6 +1103,8 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label Skupina;
         private System.Windows.Forms.Label lbl_id_zaplaceno;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button_uloz_vsichni;
+        private System.Windows.Forms.NumericUpDown numericUpDown_id_vsichni;
     }
 }
 
