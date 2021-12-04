@@ -39,15 +39,18 @@ namespace semestralka_windows_forms
             try
             {
                 databaze.Nacti(',');
-                listBox_vsichni.Items.Clear();
                 //Výplň listboxu všichni
+                listBox_vsichni.Items.Clear();
                 listBox_vsichni.Items.AddRange(databaze.VratVsechny());
                 //Výplň listboxu zaplaceno
+                listBox_zaplaceno.Items.Clear();
                 listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
                 //Výplň listboxu nezaplaceno
+                listBox_nezaplaceno.Items.Clear();
                 listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
                 //Výplň listboxu chybí
-                listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(3));
+                listBox_chyba.Items.Clear();
+                listBox_chyba.Items.AddRange(databaze.VratVybrane(3));
             }
             catch
             {

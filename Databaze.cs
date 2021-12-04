@@ -95,7 +95,7 @@ namespace semestralka_windows_forms
             }
             return email;
         }
-        public void Uloz(string oddelovac)
+        public void Uloz(char oddelovac)
         {
             // otevření souboru pro zápis
             using (StreamWriter sw = new StreamWriter(soubor))
@@ -103,10 +103,10 @@ namespace semestralka_windows_forms
                 // projetí uživatelů
                 foreach (Osoba o in zaznam_osoba)
                 {
-                    // vytvoření pole hodnot
-                    string[] hodnoty = { o.Jmeno, o.Prijmeni, o.Email, o.ID.ToString(), o.Zaplaceno.ToString() };
+                    // vytvoření pole hodnot + ochrana, pokud je zadán oddělovač 
+                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '), o.Prijmeni.Replace(oddelovac, ' '), o.Email.Replace(oddelovac, ' '), o.ID.ToString(), o.Zaplaceno.ToString() };
                     // vytvoření řádku
-                    string radek = String.Join(oddelovac, hodnoty);
+                    string radek = String.Join(oddelovac.ToString(), hodnoty);
                     // zápis řádku
                     sw.WriteLine(radek);
                 }
