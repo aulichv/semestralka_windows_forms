@@ -136,5 +136,28 @@ namespace semestralka_windows_forms
                 }
             }
         }
+
+        public void Nacti2(char oddelovac, string path)
+        {
+            zaznam_osoba.Clear();
+            // Otevře soubor pro čtení
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string s;
+                // čte řádek po řádku
+                while ((s = sr.ReadLine()) != null)
+                {
+                    // rozdělí string řádku podle středníků
+                    string[] sloupec = s.Split(oddelovac);
+                    string jmeno = sloupec[0];
+                    string prijmeni = sloupec[1];
+                    string email = sloupec[2];
+                    uint id = uint.Parse(sloupec[3]);
+                    int zaplaceno = int.Parse(sloupec[4]);
+                    // přidá uživatele s danými hodnotami
+                    PridejOsobu(jmeno, prijmeni, email, id, zaplaceno);
+                }
+            }
+        }
     }
 }

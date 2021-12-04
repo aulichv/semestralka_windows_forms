@@ -123,7 +123,7 @@ namespace semestralka_windows_forms
         {
             try
             {
-                databaze.Uloz(",");
+                databaze.Uloz(',');
             }
             catch
             {
@@ -149,6 +149,35 @@ namespace semestralka_windows_forms
                 else if (u.ID % 2 != 0)
                     lbl_skupina_zaplaceno.Text = "Přípravka";
                 lbl_platba_datum_vsichni.Text = u.Datum.ToShortDateString();
+            }
+        }
+
+        private void button_import_banka_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            //Omezení souborů, které mohou být vybrány
+            dialog.Filter = "CSV soubory (*.csv)|*.csv"; 
+            //Zákaz výběru více souborů
+            dialog.Multiselect = false; 
+            //Pokud uživatel potvrdí
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                //Získá cestu  k souboru
+                String path = dialog.FileName;
+                databaze.Nacti2(',',path);
+                //Výplň listboxu všichni
+                listBox_vsichni.Items.Clear();
+                listBox_vsichni.Items.AddRange(databaze.VratVsechny());
+                //Výplň listboxu zaplaceno
+                listBox_zaplaceno.Items.Clear();
+                listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
+                //Výplň listboxu nezaplaceno
+                listBox_nezaplaceno.Items.Clear();
+                listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
+                //Výplň listboxu chybí
+                listBox_chyba.Items.Clear();
+                listBox_chyba.Items.AddRange(databaze.VratVybrane(3));
+
             }
         }
     }

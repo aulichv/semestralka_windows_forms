@@ -29,13 +29,19 @@ namespace semestralka_windows_forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.button_import_banka = new System.Windows.Forms.Button();
             this.button_nacti_osoby = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listBox_vsichni = new System.Windows.Forms.ListBox();
             this.lbl_vsichni_tabulka = new System.Windows.Forms.Label();
             this.groupBox_detail_vsichni = new System.Windows.Forms.GroupBox();
+            this.lbl_skupina_vsichni = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_id_vsichni = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_prijmeni_vsichni = new System.Windows.Forms.Label();
             this.button_odebrat_databaze = new System.Windows.Forms.Button();
             this.lbl_platba_datum_vsichni = new System.Windows.Forms.Label();
             this.lbl_platba = new System.Windows.Forms.Label();
@@ -47,9 +53,19 @@ namespace semestralka_windows_forms
             this.button_pridat_databaze = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label34 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button_uloz_vsichni = new System.Windows.Forms.Button();
             this.groupBox_pridat_vsichni = new System.Windows.Forms.GroupBox();
+            this.radioButton_nezaplaceno = new System.Windows.Forms.RadioButton();
+            this.radioButton_zaplaceno = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown_id_vsichni = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_email_vsichni = new System.Windows.Forms.TextBox();
+            this.textBox_prijmeni_vsichni = new System.Windows.Forms.TextBox();
+            this.textBox_jmeno_vsichni = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -61,6 +77,11 @@ namespace semestralka_windows_forms
             this.listBox_zaplaceno = new System.Windows.Forms.ListBox();
             this.lbl_zaplaceno_tabulka = new System.Windows.Forms.Label();
             this.groupBox_detail_zaplaceno = new System.Windows.Forms.GroupBox();
+            this.lbl_skupina_zaplaceno = new System.Windows.Forms.Label();
+            this.Skupina = new System.Windows.Forms.Label();
+            this.lbl_id_zaplaceno = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_prijmeni_zaplaceno = new System.Windows.Forms.Label();
             this.lbl_datum_platba_zaplaceno = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.lbl_email_zaplaceni = new System.Windows.Forms.Label();
@@ -82,9 +103,6 @@ namespace semestralka_windows_forms
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.listBox_chyba = new System.Windows.Forms.ListBox();
             this.lbl_chyba_tabulka = new System.Windows.Forms.Label();
@@ -100,49 +118,33 @@ namespace semestralka_windows_forms
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.lbl_prijmeni_vsichni = new System.Windows.Forms.Label();
-            this.textBox_jmeno_vsichni = new System.Windows.Forms.TextBox();
-            this.textBox_prijmeni_vsichni = new System.Windows.Forms.TextBox();
-            this.textBox_email_vsichni = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_prijmeni_zaplaceno = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbl_id_vsichni = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbl_skupina_vsichni = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lbl_id_zaplaceno = new System.Windows.Forms.Label();
-            this.Skupina = new System.Windows.Forms.Label();
-            this.lbl_skupina_zaplaceno = new System.Windows.Forms.Label();
-            this.button_uloz_vsichni = new System.Windows.Forms.Button();
-            this.numericUpDown_id_vsichni = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.radioButton_zaplaceno = new System.Windows.Forms.RadioButton();
-            this.radioButton_nezaplaceno = new System.Windows.Forms.RadioButton();
+            this.button10 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox_pridat_vsichni.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox_detail_zaplaceno.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox_detail_nezaplaceno.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // button_import_banka
             // 
-            this.button1.Location = new System.Drawing.Point(605, 341);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_import_banka.Location = new System.Drawing.Point(579, 341);
+            this.button_import_banka.Name = "button_import_banka";
+            this.button_import_banka.Size = new System.Drawing.Size(89, 23);
+            this.button_import_banka.TabIndex = 0;
+            this.button_import_banka.Text = "Import plateb";
+            this.button_import_banka.UseVisualStyleBackColor = true;
+            this.button_import_banka.Click += new System.EventHandler(this.button_import_banka_Click);
             // 
             // button_nacti_osoby
             // 
@@ -198,6 +200,51 @@ namespace semestralka_windows_forms
             this.groupBox_detail_vsichni.TabIndex = 10;
             this.groupBox_detail_vsichni.TabStop = false;
             this.groupBox_detail_vsichni.Text = "Detail vybrané osoby:";
+            // 
+            // lbl_skupina_vsichni
+            // 
+            this.lbl_skupina_vsichni.AutoSize = true;
+            this.lbl_skupina_vsichni.Location = new System.Drawing.Point(100, 123);
+            this.lbl_skupina_vsichni.Name = "lbl_skupina_vsichni";
+            this.lbl_skupina_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_vsichni.TabIndex = 19;
+            this.lbl_skupina_vsichni.Text = "label7";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(100, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Skupina";
+            // 
+            // lbl_id_vsichni
+            // 
+            this.lbl_id_vsichni.AutoSize = true;
+            this.lbl_id_vsichni.Location = new System.Drawing.Point(6, 123);
+            this.lbl_id_vsichni.Name = "lbl_id_vsichni";
+            this.lbl_id_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_vsichni.TabIndex = 17;
+            this.lbl_id_vsichni.Text = "label7";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "ID";
+            // 
+            // lbl_prijmeni_vsichni
+            // 
+            this.lbl_prijmeni_vsichni.AutoSize = true;
+            this.lbl_prijmeni_vsichni.Location = new System.Drawing.Point(100, 47);
+            this.lbl_prijmeni_vsichni.Name = "lbl_prijmeni_vsichni";
+            this.lbl_prijmeni_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_vsichni.TabIndex = 15;
+            this.lbl_prijmeni_vsichni.Text = "label1";
             // 
             // button_odebrat_databaze
             // 
@@ -299,7 +346,7 @@ namespace semestralka_windows_forms
             // 
             this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.pictureBox1);
-            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.button_import_banka);
             this.tabPage4.Controls.Add(this.button_nacti_osoby);
             this.tabPage4.Controls.Add(this.label34);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -310,10 +357,18 @@ namespace semestralka_windows_forms
             this.tabPage4.Text = "Instrukce";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(568, 105);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(20, 48);
+            this.label34.Location = new System.Drawing.Point(8, 12);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(41, 13);
             this.label34.TabIndex = 0;
@@ -333,6 +388,16 @@ namespace semestralka_windows_forms
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Všichni";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button_uloz_vsichni
+            // 
+            this.button_uloz_vsichni.Location = new System.Drawing.Point(659, 354);
+            this.button_uloz_vsichni.Name = "button_uloz_vsichni";
+            this.button_uloz_vsichni.Size = new System.Drawing.Size(75, 23);
+            this.button_uloz_vsichni.TabIndex = 16;
+            this.button_uloz_vsichni.Text = "Ulož";
+            this.button_uloz_vsichni.UseVisualStyleBackColor = true;
+            this.button_uloz_vsichni.Click += new System.EventHandler(this.button_uloz_vsichni_Click);
             // 
             // groupBox_pridat_vsichni
             // 
@@ -354,6 +419,74 @@ namespace semestralka_windows_forms
             this.groupBox_pridat_vsichni.TabIndex = 14;
             this.groupBox_pridat_vsichni.TabStop = false;
             this.groupBox_pridat_vsichni.Text = "groupBox4";
+            // 
+            // radioButton_nezaplaceno
+            // 
+            this.radioButton_nezaplaceno.AutoSize = true;
+            this.radioButton_nezaplaceno.Location = new System.Drawing.Point(126, 169);
+            this.radioButton_nezaplaceno.Name = "radioButton_nezaplaceno";
+            this.radioButton_nezaplaceno.Size = new System.Drawing.Size(40, 17);
+            this.radioButton_nezaplaceno.TabIndex = 22;
+            this.radioButton_nezaplaceno.TabStop = true;
+            this.radioButton_nezaplaceno.Text = "NE";
+            this.radioButton_nezaplaceno.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_zaplaceno
+            // 
+            this.radioButton_zaplaceno.AutoSize = true;
+            this.radioButton_zaplaceno.Location = new System.Drawing.Point(71, 169);
+            this.radioButton_zaplaceno.Name = "radioButton_zaplaceno";
+            this.radioButton_zaplaceno.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_zaplaceno.TabIndex = 21;
+            this.radioButton_zaplaceno.TabStop = true;
+            this.radioButton_zaplaceno.Text = "ANO";
+            this.radioButton_zaplaceno.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 169);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Zaplaceno";
+            // 
+            // numericUpDown_id_vsichni
+            // 
+            this.numericUpDown_id_vsichni.Location = new System.Drawing.Point(62, 133);
+            this.numericUpDown_id_vsichni.Name = "numericUpDown_id_vsichni";
+            this.numericUpDown_id_vsichni.Size = new System.Drawing.Size(133, 20);
+            this.numericUpDown_id_vsichni.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "ID";
+            // 
+            // textBox_email_vsichni
+            // 
+            this.textBox_email_vsichni.Location = new System.Drawing.Point(62, 103);
+            this.textBox_email_vsichni.Name = "textBox_email_vsichni";
+            this.textBox_email_vsichni.Size = new System.Drawing.Size(133, 20);
+            this.textBox_email_vsichni.TabIndex = 15;
+            // 
+            // textBox_prijmeni_vsichni
+            // 
+            this.textBox_prijmeni_vsichni.Location = new System.Drawing.Point(62, 67);
+            this.textBox_prijmeni_vsichni.Name = "textBox_prijmeni_vsichni";
+            this.textBox_prijmeni_vsichni.Size = new System.Drawing.Size(133, 20);
+            this.textBox_prijmeni_vsichni.TabIndex = 14;
+            // 
+            // textBox_jmeno_vsichni
+            // 
+            this.textBox_jmeno_vsichni.Location = new System.Drawing.Point(62, 25);
+            this.textBox_jmeno_vsichni.Name = "textBox_jmeno_vsichni";
+            this.textBox_jmeno_vsichni.Size = new System.Drawing.Size(133, 20);
+            this.textBox_jmeno_vsichni.TabIndex = 13;
             // 
             // label27
             // 
@@ -472,6 +605,51 @@ namespace semestralka_windows_forms
             this.groupBox_detail_zaplaceno.TabIndex = 13;
             this.groupBox_detail_zaplaceno.TabStop = false;
             this.groupBox_detail_zaplaceno.Text = "Detail vybrané osoby:";
+            // 
+            // lbl_skupina_zaplaceno
+            // 
+            this.lbl_skupina_zaplaceno.AutoSize = true;
+            this.lbl_skupina_zaplaceno.Location = new System.Drawing.Point(6, 176);
+            this.lbl_skupina_zaplaceno.Name = "lbl_skupina_zaplaceno";
+            this.lbl_skupina_zaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_zaplaceno.TabIndex = 19;
+            this.lbl_skupina_zaplaceno.Text = "label7";
+            // 
+            // Skupina
+            // 
+            this.Skupina.AutoSize = true;
+            this.Skupina.Location = new System.Drawing.Point(6, 163);
+            this.Skupina.Name = "Skupina";
+            this.Skupina.Size = new System.Drawing.Size(46, 13);
+            this.Skupina.TabIndex = 18;
+            this.Skupina.Text = "Skupina";
+            // 
+            // lbl_id_zaplaceno
+            // 
+            this.lbl_id_zaplaceno.AutoSize = true;
+            this.lbl_id_zaplaceno.Location = new System.Drawing.Point(6, 133);
+            this.lbl_id_zaplaceno.Name = "lbl_id_zaplaceno";
+            this.lbl_id_zaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_zaplaceno.TabIndex = 17;
+            this.lbl_id_zaplaceno.Text = "label7";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 120);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "ID";
+            // 
+            // lbl_prijmeni_zaplaceno
+            // 
+            this.lbl_prijmeni_zaplaceno.AutoSize = true;
+            this.lbl_prijmeni_zaplaceno.Location = new System.Drawing.Point(101, 47);
+            this.lbl_prijmeni_zaplaceno.Name = "lbl_prijmeni_zaplaceno";
+            this.lbl_prijmeni_zaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_zaplaceno.TabIndex = 15;
+            this.lbl_prijmeni_zaplaceno.Text = "label4";
             // 
             // lbl_datum_platba_zaplaceno
             // 
@@ -676,31 +854,6 @@ namespace semestralka_windows_forms
             this.label16.TabIndex = 8;
             this.label16.Text = "label16";
             // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(706, 423);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 15;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 105);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(568, 105);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.listBox_chyba);
@@ -850,173 +1003,24 @@ namespace semestralka_windows_forms
             this.button11.Text = "button8";
             this.button11.UseVisualStyleBackColor = true;
             // 
-            // lbl_prijmeni_vsichni
+            // button10
             // 
-            this.lbl_prijmeni_vsichni.AutoSize = true;
-            this.lbl_prijmeni_vsichni.Location = new System.Drawing.Point(100, 47);
-            this.lbl_prijmeni_vsichni.Name = "lbl_prijmeni_vsichni";
-            this.lbl_prijmeni_vsichni.Size = new System.Drawing.Size(35, 13);
-            this.lbl_prijmeni_vsichni.TabIndex = 15;
-            this.lbl_prijmeni_vsichni.Text = "label1";
+            this.button10.Location = new System.Drawing.Point(706, 423);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 15;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
             // 
-            // textBox_jmeno_vsichni
+            // pictureBox1
             // 
-            this.textBox_jmeno_vsichni.Location = new System.Drawing.Point(62, 25);
-            this.textBox_jmeno_vsichni.Name = "textBox_jmeno_vsichni";
-            this.textBox_jmeno_vsichni.Size = new System.Drawing.Size(133, 20);
-            this.textBox_jmeno_vsichni.TabIndex = 13;
-            // 
-            // textBox_prijmeni_vsichni
-            // 
-            this.textBox_prijmeni_vsichni.Location = new System.Drawing.Point(62, 67);
-            this.textBox_prijmeni_vsichni.Name = "textBox_prijmeni_vsichni";
-            this.textBox_prijmeni_vsichni.Size = new System.Drawing.Size(133, 20);
-            this.textBox_prijmeni_vsichni.TabIndex = 14;
-            // 
-            // textBox_email_vsichni
-            // 
-            this.textBox_email_vsichni.Location = new System.Drawing.Point(62, 103);
-            this.textBox_email_vsichni.Name = "textBox_email_vsichni";
-            this.textBox_email_vsichni.Size = new System.Drawing.Size(133, 20);
-            this.textBox_email_vsichni.TabIndex = 15;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "ID";
-            // 
-            // lbl_prijmeni_zaplaceno
-            // 
-            this.lbl_prijmeni_zaplaceno.AutoSize = true;
-            this.lbl_prijmeni_zaplaceno.Location = new System.Drawing.Point(101, 47);
-            this.lbl_prijmeni_zaplaceno.Name = "lbl_prijmeni_zaplaceno";
-            this.lbl_prijmeni_zaplaceno.Size = new System.Drawing.Size(35, 13);
-            this.lbl_prijmeni_zaplaceno.TabIndex = 15;
-            this.lbl_prijmeni_zaplaceno.Text = "label4";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "ID";
-            // 
-            // lbl_id_vsichni
-            // 
-            this.lbl_id_vsichni.AutoSize = true;
-            this.lbl_id_vsichni.Location = new System.Drawing.Point(6, 123);
-            this.lbl_id_vsichni.Name = "lbl_id_vsichni";
-            this.lbl_id_vsichni.Size = new System.Drawing.Size(35, 13);
-            this.lbl_id_vsichni.TabIndex = 17;
-            this.lbl_id_vsichni.Text = "label7";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(100, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Skupina";
-            // 
-            // lbl_skupina_vsichni
-            // 
-            this.lbl_skupina_vsichni.AutoSize = true;
-            this.lbl_skupina_vsichni.Location = new System.Drawing.Point(100, 123);
-            this.lbl_skupina_vsichni.Name = "lbl_skupina_vsichni";
-            this.lbl_skupina_vsichni.Size = new System.Drawing.Size(35, 13);
-            this.lbl_skupina_vsichni.TabIndex = 19;
-            this.lbl_skupina_vsichni.Text = "label7";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 120);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "ID";
-            // 
-            // lbl_id_zaplaceno
-            // 
-            this.lbl_id_zaplaceno.AutoSize = true;
-            this.lbl_id_zaplaceno.Location = new System.Drawing.Point(6, 133);
-            this.lbl_id_zaplaceno.Name = "lbl_id_zaplaceno";
-            this.lbl_id_zaplaceno.Size = new System.Drawing.Size(35, 13);
-            this.lbl_id_zaplaceno.TabIndex = 17;
-            this.lbl_id_zaplaceno.Text = "label7";
-            // 
-            // Skupina
-            // 
-            this.Skupina.AutoSize = true;
-            this.Skupina.Location = new System.Drawing.Point(6, 163);
-            this.Skupina.Name = "Skupina";
-            this.Skupina.Size = new System.Drawing.Size(46, 13);
-            this.Skupina.TabIndex = 18;
-            this.Skupina.Text = "Skupina";
-            // 
-            // lbl_skupina_zaplaceno
-            // 
-            this.lbl_skupina_zaplaceno.AutoSize = true;
-            this.lbl_skupina_zaplaceno.Location = new System.Drawing.Point(6, 176);
-            this.lbl_skupina_zaplaceno.Name = "lbl_skupina_zaplaceno";
-            this.lbl_skupina_zaplaceno.Size = new System.Drawing.Size(35, 13);
-            this.lbl_skupina_zaplaceno.TabIndex = 19;
-            this.lbl_skupina_zaplaceno.Text = "label7";
-            // 
-            // button_uloz_vsichni
-            // 
-            this.button_uloz_vsichni.Location = new System.Drawing.Point(659, 354);
-            this.button_uloz_vsichni.Name = "button_uloz_vsichni";
-            this.button_uloz_vsichni.Size = new System.Drawing.Size(75, 23);
-            this.button_uloz_vsichni.TabIndex = 16;
-            this.button_uloz_vsichni.Text = "Ulož";
-            this.button_uloz_vsichni.UseVisualStyleBackColor = true;
-            this.button_uloz_vsichni.Click += new System.EventHandler(this.button_uloz_vsichni_Click);
-            // 
-            // numericUpDown_id_vsichni
-            // 
-            this.numericUpDown_id_vsichni.Location = new System.Drawing.Point(62, 133);
-            this.numericUpDown_id_vsichni.Name = "numericUpDown_id_vsichni";
-            this.numericUpDown_id_vsichni.Size = new System.Drawing.Size(133, 20);
-            this.numericUpDown_id_vsichni.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 169);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Zaplaceno";
-            // 
-            // radioButton_zaplaceno
-            // 
-            this.radioButton_zaplaceno.AutoSize = true;
-            this.radioButton_zaplaceno.Location = new System.Drawing.Point(71, 169);
-            this.radioButton_zaplaceno.Name = "radioButton_zaplaceno";
-            this.radioButton_zaplaceno.Size = new System.Drawing.Size(48, 17);
-            this.radioButton_zaplaceno.TabIndex = 21;
-            this.radioButton_zaplaceno.TabStop = true;
-            this.radioButton_zaplaceno.Text = "ANO";
-            this.radioButton_zaplaceno.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_nezaplaceno
-            // 
-            this.radioButton_nezaplaceno.AutoSize = true;
-            this.radioButton_nezaplaceno.Location = new System.Drawing.Point(126, 169);
-            this.radioButton_nezaplaceno.Name = "radioButton_nezaplaceno";
-            this.radioButton_nezaplaceno.Size = new System.Drawing.Size(40, 17);
-            this.radioButton_nezaplaceno.TabIndex = 22;
-            this.radioButton_nezaplaceno.TabStop = true;
-            this.radioButton_nezaplaceno.Text = "NE";
-            this.radioButton_nezaplaceno.UseVisualStyleBackColor = true;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(23, 59);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(470, 252);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -1032,10 +1036,12 @@ namespace semestralka_windows_forms
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox_pridat_vsichni.ResumeLayout(false);
             this.groupBox_pridat_vsichni.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox_detail_zaplaceno.ResumeLayout(false);
@@ -1044,20 +1050,18 @@ namespace semestralka_windows_forms
             this.tabPage3.PerformLayout();
             this.groupBox_detail_nezaplaceno.ResumeLayout(false);
             this.groupBox_detail_nezaplaceno.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_import_banka;
         private System.Windows.Forms.Button button_nacti_osoby;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -1112,7 +1116,6 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ListBox listBox_chyba;
         private System.Windows.Forms.Label lbl_chyba_tabulka;
@@ -1147,6 +1150,7 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.RadioButton radioButton_nezaplaceno;
         private System.Windows.Forms.RadioButton radioButton_zaplaceno;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
