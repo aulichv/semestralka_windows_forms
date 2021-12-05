@@ -220,5 +220,27 @@ namespace semestralka_windows_forms
                     lbl_skupina_nezaplaceno.Text = "Přípravka";
             }
         }
+
+        private void button_kopiruj_email_zaplaceno_Click(object sender, EventArgs e)
+        {
+            //Zkopírování emailů do schránky
+            if (!string.IsNullOrEmpty(textBox_zaplaceno.Text))
+                Clipboard.SetText(textBox_zaplaceno.Text);
+        }
+
+        private void button_export_zaplaceno_Click(object sender, EventArgs e)
+        {
+            //Uložení neplatičů do .csv
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();   
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.DefaultExt = "csv";
+            saveFileDialog1.Filter = "CSV soubory (*.csv)|*.csv";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                databaze.Export(';', saveFileDialog1.FileName,1);
+            }
+        }
     }
 }

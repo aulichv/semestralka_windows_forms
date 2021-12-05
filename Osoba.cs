@@ -12,7 +12,7 @@ namespace semestralka_windows_forms
         public string Prijmeni { get; private set; }
         public string Email { get; private set; }
         public uint ID { get; private set; }
-        //0 == nezaplaceno; 1 == zaplaceno; 2 == spatna castka
+        //0 = nezaplaceno; 1 = zaplaceno; 2 = spatna castka
         public int Zaplaceno { get;  set; }
         public DateTime Datum { get; set; }
         public int Castka { get; set; }

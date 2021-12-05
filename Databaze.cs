@@ -160,5 +160,24 @@ namespace semestralka_windows_forms
                 }
             }
         }
+        public void Export(char oddelovac, string cesta, int zaplaceno)
+        {
+            // otevření souboru pro zápis
+            using (StreamWriter sw = new StreamWriter(cesta))
+            {
+                //Projde vsechny osoby, ktere zaplatili
+                foreach (Osoba o in VratVybrane(zaplaceno))
+                {
+                    // vytvoření pole hodnot + ochrana, pokud je zadán oddělovač 
+                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '), o.Prijmeni.Replace(oddelovac, ' '), o.Email.Replace(oddelovac, ' '), o.ID.ToString(), o.Zaplaceno.ToString() };
+                    // vytvoření řádku
+                    string radek = String.Join(oddelovac.ToString(), hodnoty);
+                    // zápis řádku
+                    sw.WriteLine(radek);
+                }
+                // vyprázdnění bufferu
+                sw.Flush();
+            }
+        }
     }
 }
