@@ -53,6 +53,7 @@ namespace semestralka_windows_forms
             this.button_pridat_databaze = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button_porovnej = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -102,8 +103,8 @@ namespace semestralka_windows_forms
             this.label43 = new System.Windows.Forms.Label();
             this.lbl_email_nezaplaceno = new System.Windows.Forms.Label();
             this.textBox_nezaplaceno = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.button_export_nezaplaceno = new System.Windows.Forms.Button();
+            this.button_zkopiruj_email_nezaplaceno = new System.Windows.Forms.Button();
             this.listBox_nezaplaceno = new System.Windows.Forms.ListBox();
             this.lbl_nezaplaceno_tabulka = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -125,8 +126,8 @@ namespace semestralka_windows_forms
             this.lbl_chyba_tabulka = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.textBox_chybna_castka = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.button_export_chyba = new System.Windows.Forms.Button();
+            this.button_zkopiruj_email_chyba = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -218,9 +219,9 @@ namespace semestralka_windows_forms
             this.lbl_skupina_vsichni.AutoSize = true;
             this.lbl_skupina_vsichni.Location = new System.Drawing.Point(100, 123);
             this.lbl_skupina_vsichni.Name = "lbl_skupina_vsichni";
-            this.lbl_skupina_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_vsichni.Size = new System.Drawing.Size(59, 13);
             this.lbl_skupina_vsichni.TabIndex = 19;
-            this.lbl_skupina_vsichni.Text = "label7";
+            this.lbl_skupina_vsichni.Text = "Nevybráno";
             // 
             // label5
             // 
@@ -236,9 +237,9 @@ namespace semestralka_windows_forms
             this.lbl_id_vsichni.AutoSize = true;
             this.lbl_id_vsichni.Location = new System.Drawing.Point(6, 123);
             this.lbl_id_vsichni.Name = "lbl_id_vsichni";
-            this.lbl_id_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_vsichni.Size = new System.Drawing.Size(59, 13);
             this.lbl_id_vsichni.TabIndex = 17;
-            this.lbl_id_vsichni.Text = "label7";
+            this.lbl_id_vsichni.Text = "Nevybráno";
             // 
             // label4
             // 
@@ -254,9 +255,9 @@ namespace semestralka_windows_forms
             this.lbl_prijmeni_vsichni.AutoSize = true;
             this.lbl_prijmeni_vsichni.Location = new System.Drawing.Point(100, 47);
             this.lbl_prijmeni_vsichni.Name = "lbl_prijmeni_vsichni";
-            this.lbl_prijmeni_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_vsichni.Size = new System.Drawing.Size(59, 13);
             this.lbl_prijmeni_vsichni.TabIndex = 15;
-            this.lbl_prijmeni_vsichni.Text = "label1";
+            this.lbl_prijmeni_vsichni.Text = "Nevybráno";
             // 
             // button_odebrat_databaze
             // 
@@ -282,9 +283,9 @@ namespace semestralka_windows_forms
             this.lbl_platba.AutoSize = true;
             this.lbl_platba.Location = new System.Drawing.Point(6, 169);
             this.lbl_platba.Name = "lbl_platba";
-            this.lbl_platba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_platba.Size = new System.Drawing.Size(59, 13);
             this.lbl_platba.TabIndex = 13;
-            this.lbl_platba.Text = "label9";
+            this.lbl_platba.Text = "Nevybráno";
             // 
             // label8
             // 
@@ -300,9 +301,9 @@ namespace semestralka_windows_forms
             this.lbl_email_vsichni.AutoSize = true;
             this.lbl_email_vsichni.Location = new System.Drawing.Point(6, 87);
             this.lbl_email_vsichni.Name = "lbl_email_vsichni";
-            this.lbl_email_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_email_vsichni.Size = new System.Drawing.Size(59, 13);
             this.lbl_email_vsichni.TabIndex = 11;
-            this.lbl_email_vsichni.Text = "label7";
+            this.lbl_email_vsichni.Text = "Nevybráno";
             // 
             // lbl_email_nadpis
             // 
@@ -318,9 +319,9 @@ namespace semestralka_windows_forms
             this.lbl_jmeno_vsichni.AutoSize = true;
             this.lbl_jmeno_vsichni.Location = new System.Drawing.Point(6, 47);
             this.lbl_jmeno_vsichni.Name = "lbl_jmeno_vsichni";
-            this.lbl_jmeno_vsichni.Size = new System.Drawing.Size(35, 13);
+            this.lbl_jmeno_vsichni.Size = new System.Drawing.Size(59, 13);
             this.lbl_jmeno_vsichni.TabIndex = 9;
-            this.lbl_jmeno_vsichni.Text = "label5";
+            this.lbl_jmeno_vsichni.Text = "Nevybráno";
             // 
             // lbl_jmeno_nadpis
             // 
@@ -369,9 +370,19 @@ namespace semestralka_windows_forms
             this.tabPage4.Text = "Instrukce";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button_porovnej
+            // 
+            this.button_porovnej.Location = new System.Drawing.Point(611, 423);
+            this.button_porovnej.Name = "button_porovnej";
+            this.button_porovnej.Size = new System.Drawing.Size(89, 23);
+            this.button_porovnej.TabIndex = 5;
+            this.button_porovnej.Text = "Kontrola plateb";
+            this.button_porovnej.UseVisualStyleBackColor = true;
+            this.button_porovnej.Click += new System.EventHandler(this.button_porovnej_Click);
+            // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(568, 105);
+            this.pictureBox2.Location = new System.Drawing.Point(499, 59);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.TabIndex = 4;
@@ -381,7 +392,7 @@ namespace semestralka_windows_forms
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 59);
+            this.pictureBox1.Location = new System.Drawing.Point(23, 83);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(470, 252);
             this.pictureBox1.TabIndex = 3;
@@ -447,10 +458,10 @@ namespace semestralka_windows_forms
             this.radioButton_nezaplaceno.AutoSize = true;
             this.radioButton_nezaplaceno.Location = new System.Drawing.Point(126, 169);
             this.radioButton_nezaplaceno.Name = "radioButton_nezaplaceno";
-            this.radioButton_nezaplaceno.Size = new System.Drawing.Size(40, 17);
+            this.radioButton_nezaplaceno.Size = new System.Drawing.Size(39, 17);
             this.radioButton_nezaplaceno.TabIndex = 22;
             this.radioButton_nezaplaceno.TabStop = true;
-            this.radioButton_nezaplaceno.Text = "NE";
+            this.radioButton_nezaplaceno.Text = "Ne";
             this.radioButton_nezaplaceno.UseVisualStyleBackColor = true;
             // 
             // radioButton_zaplaceno
@@ -458,10 +469,10 @@ namespace semestralka_windows_forms
             this.radioButton_zaplaceno.AutoSize = true;
             this.radioButton_zaplaceno.Location = new System.Drawing.Point(71, 169);
             this.radioButton_zaplaceno.Name = "radioButton_zaplaceno";
-            this.radioButton_zaplaceno.Size = new System.Drawing.Size(48, 17);
+            this.radioButton_zaplaceno.Size = new System.Drawing.Size(44, 17);
             this.radioButton_zaplaceno.TabIndex = 21;
             this.radioButton_zaplaceno.TabStop = true;
-            this.radioButton_zaplaceno.Text = "ANO";
+            this.radioButton_zaplaceno.Text = "Ano";
             this.radioButton_zaplaceno.UseVisualStyleBackColor = true;
             // 
             // label7
@@ -635,9 +646,9 @@ namespace semestralka_windows_forms
             this.lbl_skupina_zaplaceno.AutoSize = true;
             this.lbl_skupina_zaplaceno.Location = new System.Drawing.Point(6, 176);
             this.lbl_skupina_zaplaceno.Name = "lbl_skupina_zaplaceno";
-            this.lbl_skupina_zaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_zaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_skupina_zaplaceno.TabIndex = 19;
-            this.lbl_skupina_zaplaceno.Text = "label7";
+            this.lbl_skupina_zaplaceno.Text = "Nevybráno";
             // 
             // Skupina
             // 
@@ -653,9 +664,9 @@ namespace semestralka_windows_forms
             this.lbl_id_zaplaceno.AutoSize = true;
             this.lbl_id_zaplaceno.Location = new System.Drawing.Point(6, 133);
             this.lbl_id_zaplaceno.Name = "lbl_id_zaplaceno";
-            this.lbl_id_zaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_zaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_id_zaplaceno.TabIndex = 17;
-            this.lbl_id_zaplaceno.Text = "label7";
+            this.lbl_id_zaplaceno.Text = "Nevybráno";
             // 
             // label6
             // 
@@ -671,18 +682,18 @@ namespace semestralka_windows_forms
             this.lbl_prijmeni_zaplaceno.AutoSize = true;
             this.lbl_prijmeni_zaplaceno.Location = new System.Drawing.Point(101, 47);
             this.lbl_prijmeni_zaplaceno.Name = "lbl_prijmeni_zaplaceno";
-            this.lbl_prijmeni_zaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_zaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_prijmeni_zaplaceno.TabIndex = 15;
-            this.lbl_prijmeni_zaplaceno.Text = "label4";
+            this.lbl_prijmeni_zaplaceno.Text = "Nevybráno";
             // 
             // lbl_datum_platba_zaplaceno
             // 
             this.lbl_datum_platba_zaplaceno.AutoSize = true;
             this.lbl_datum_platba_zaplaceno.Location = new System.Drawing.Point(81, 203);
             this.lbl_datum_platba_zaplaceno.Name = "lbl_datum_platba_zaplaceno";
-            this.lbl_datum_platba_zaplaceno.Size = new System.Drawing.Size(41, 13);
+            this.lbl_datum_platba_zaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_datum_platba_zaplaceno.TabIndex = 14;
-            this.lbl_datum_platba_zaplaceno.Text = "label18";
+            this.lbl_datum_platba_zaplaceno.Text = "Nevybráno";
             // 
             // label20
             // 
@@ -698,9 +709,9 @@ namespace semestralka_windows_forms
             this.lbl_email_zaplaceni.AutoSize = true;
             this.lbl_email_zaplaceni.Location = new System.Drawing.Point(6, 90);
             this.lbl_email_zaplaceni.Name = "lbl_email_zaplaceni";
-            this.lbl_email_zaplaceni.Size = new System.Drawing.Size(41, 13);
+            this.lbl_email_zaplaceni.Size = new System.Drawing.Size(59, 13);
             this.lbl_email_zaplaceni.TabIndex = 11;
-            this.lbl_email_zaplaceni.Text = "label21";
+            this.lbl_email_zaplaceni.Text = "Nevybráno";
             // 
             // label22
             // 
@@ -716,9 +727,9 @@ namespace semestralka_windows_forms
             this.lbl_jmeno_zaplaceno.AutoSize = true;
             this.lbl_jmeno_zaplaceno.Location = new System.Drawing.Point(6, 47);
             this.lbl_jmeno_zaplaceno.Name = "lbl_jmeno_zaplaceno";
-            this.lbl_jmeno_zaplaceno.Size = new System.Drawing.Size(41, 13);
+            this.lbl_jmeno_zaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_jmeno_zaplaceno.TabIndex = 9;
-            this.lbl_jmeno_zaplaceno.Text = "label23";
+            this.lbl_jmeno_zaplaceno.Text = "Nevybráno";
             // 
             // label24
             // 
@@ -734,8 +745,8 @@ namespace semestralka_windows_forms
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.lbl_email_nezaplaceno);
             this.tabPage3.Controls.Add(this.textBox_nezaplaceno);
-            this.tabPage3.Controls.Add(this.button7);
-            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.button_export_nezaplaceno);
+            this.tabPage3.Controls.Add(this.button_zkopiruj_email_nezaplaceno);
             this.tabPage3.Controls.Add(this.listBox_nezaplaceno);
             this.tabPage3.Controls.Add(this.lbl_nezaplaceno_tabulka);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -769,9 +780,9 @@ namespace semestralka_windows_forms
             this.lbl_skupina_nezaplaceno.AutoSize = true;
             this.lbl_skupina_nezaplaceno.Location = new System.Drawing.Point(6, 176);
             this.lbl_skupina_nezaplaceno.Name = "lbl_skupina_nezaplaceno";
-            this.lbl_skupina_nezaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_nezaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_skupina_nezaplaceno.TabIndex = 19;
-            this.lbl_skupina_nezaplaceno.Text = "label7";
+            this.lbl_skupina_nezaplaceno.Text = "Nevybráno";
             // 
             // label23
             // 
@@ -787,9 +798,9 @@ namespace semestralka_windows_forms
             this.lbl_id_nezaplaceno.AutoSize = true;
             this.lbl_id_nezaplaceno.Location = new System.Drawing.Point(6, 133);
             this.lbl_id_nezaplaceno.Name = "lbl_id_nezaplaceno";
-            this.lbl_id_nezaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_nezaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_id_nezaplaceno.TabIndex = 17;
-            this.lbl_id_nezaplaceno.Text = "label7";
+            this.lbl_id_nezaplaceno.Text = "Nevybráno";
             // 
             // label26
             // 
@@ -805,18 +816,18 @@ namespace semestralka_windows_forms
             this.lbl_prijmeni_nezaplaceno.AutoSize = true;
             this.lbl_prijmeni_nezaplaceno.Location = new System.Drawing.Point(101, 47);
             this.lbl_prijmeni_nezaplaceno.Name = "lbl_prijmeni_nezaplaceno";
-            this.lbl_prijmeni_nezaplaceno.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_nezaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_prijmeni_nezaplaceno.TabIndex = 15;
-            this.lbl_prijmeni_nezaplaceno.Text = "label4";
+            this.lbl_prijmeni_nezaplaceno.Text = "Nevybráno";
             // 
             // lbl_email_nezaplaceni
             // 
             this.lbl_email_nezaplaceni.AutoSize = true;
             this.lbl_email_nezaplaceni.Location = new System.Drawing.Point(6, 90);
             this.lbl_email_nezaplaceni.Name = "lbl_email_nezaplaceni";
-            this.lbl_email_nezaplaceni.Size = new System.Drawing.Size(41, 13);
+            this.lbl_email_nezaplaceni.Size = new System.Drawing.Size(59, 13);
             this.lbl_email_nezaplaceni.TabIndex = 11;
-            this.lbl_email_nezaplaceni.Text = "label21";
+            this.lbl_email_nezaplaceni.Text = "Nevybráno";
             // 
             // label41
             // 
@@ -832,9 +843,9 @@ namespace semestralka_windows_forms
             this.lbl_jmeno_nezaplaceno.AutoSize = true;
             this.lbl_jmeno_nezaplaceno.Location = new System.Drawing.Point(6, 47);
             this.lbl_jmeno_nezaplaceno.Name = "lbl_jmeno_nezaplaceno";
-            this.lbl_jmeno_nezaplaceno.Size = new System.Drawing.Size(41, 13);
+            this.lbl_jmeno_nezaplaceno.Size = new System.Drawing.Size(59, 13);
             this.lbl_jmeno_nezaplaceno.TabIndex = 9;
-            this.lbl_jmeno_nezaplaceno.Text = "label23";
+            this.lbl_jmeno_nezaplaceno.Text = "Nevybráno";
             // 
             // label43
             // 
@@ -862,23 +873,25 @@ namespace semestralka_windows_forms
             this.textBox_nezaplaceno.Size = new System.Drawing.Size(262, 266);
             this.textBox_nezaplaceno.TabIndex = 17;
             // 
-            // button7
+            // button_export_nezaplaceno
             // 
-            this.button7.Location = new System.Drawing.Point(606, 354);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button_export_nezaplaceno.Location = new System.Drawing.Point(500, 354);
+            this.button_export_nezaplaceno.Name = "button_export_nezaplaceno";
+            this.button_export_nezaplaceno.Size = new System.Drawing.Size(75, 23);
+            this.button_export_nezaplaceno.TabIndex = 15;
+            this.button_export_nezaplaceno.Text = "Export osob";
+            this.button_export_nezaplaceno.UseVisualStyleBackColor = true;
+            this.button_export_nezaplaceno.Click += new System.EventHandler(this.button_export_nezaplaceno_Click);
             // 
-            // button8
+            // button_zkopiruj_email_nezaplaceno
             // 
-            this.button8.Location = new System.Drawing.Point(687, 354);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 14;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button_zkopiruj_email_nezaplaceno.Location = new System.Drawing.Point(675, 354);
+            this.button_zkopiruj_email_nezaplaceno.Name = "button_zkopiruj_email_nezaplaceno";
+            this.button_zkopiruj_email_nezaplaceno.Size = new System.Drawing.Size(87, 23);
+            this.button_zkopiruj_email_nezaplaceno.TabIndex = 14;
+            this.button_zkopiruj_email_nezaplaceno.Text = "Zkopíruj emaily";
+            this.button_zkopiruj_email_nezaplaceno.UseVisualStyleBackColor = true;
+            this.button_zkopiruj_email_nezaplaceno.Click += new System.EventHandler(this.button_zkopiruj_email_nezaplaceno_Click);
             // 
             // listBox_nezaplaceno
             // 
@@ -906,8 +919,8 @@ namespace semestralka_windows_forms
             this.tabPage5.Controls.Add(this.lbl_chyba_tabulka);
             this.tabPage5.Controls.Add(this.label38);
             this.tabPage5.Controls.Add(this.textBox_chybna_castka);
-            this.tabPage5.Controls.Add(this.button4);
-            this.tabPage5.Controls.Add(this.button11);
+            this.tabPage5.Controls.Add(this.button_export_chyba);
+            this.tabPage5.Controls.Add(this.button_zkopiruj_email_chyba);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -952,18 +965,18 @@ namespace semestralka_windows_forms
             this.lbl_castka_chyba.AutoSize = true;
             this.lbl_castka_chyba.Location = new System.Drawing.Point(81, 237);
             this.lbl_castka_chyba.Name = "lbl_castka_chyba";
-            this.lbl_castka_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_castka_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_castka_chyba.TabIndex = 20;
-            this.lbl_castka_chyba.Text = "label18";
+            this.lbl_castka_chyba.Text = "Nevybráno";
             // 
             // lbl_skupina_chyba
             // 
             this.lbl_skupina_chyba.AutoSize = true;
             this.lbl_skupina_chyba.Location = new System.Drawing.Point(6, 176);
             this.lbl_skupina_chyba.Name = "lbl_skupina_chyba";
-            this.lbl_skupina_chyba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_skupina_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_skupina_chyba.TabIndex = 19;
-            this.lbl_skupina_chyba.Text = "label7";
+            this.lbl_skupina_chyba.Text = "Nevybráno";
             // 
             // label9
             // 
@@ -979,9 +992,9 @@ namespace semestralka_windows_forms
             this.lbl_id_chyba.AutoSize = true;
             this.lbl_id_chyba.Location = new System.Drawing.Point(6, 133);
             this.lbl_id_chyba.Name = "lbl_id_chyba";
-            this.lbl_id_chyba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_id_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_id_chyba.TabIndex = 17;
-            this.lbl_id_chyba.Text = "label7";
+            this.lbl_id_chyba.Text = "Nevybráno";
             // 
             // label11
             // 
@@ -997,18 +1010,18 @@ namespace semestralka_windows_forms
             this.lbl_prijmeni_chyba.AutoSize = true;
             this.lbl_prijmeni_chyba.Location = new System.Drawing.Point(101, 47);
             this.lbl_prijmeni_chyba.Name = "lbl_prijmeni_chyba";
-            this.lbl_prijmeni_chyba.Size = new System.Drawing.Size(35, 13);
+            this.lbl_prijmeni_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_prijmeni_chyba.TabIndex = 15;
-            this.lbl_prijmeni_chyba.Text = "label4";
+            this.lbl_prijmeni_chyba.Text = "Nevybráno";
             // 
             // lbl_datum_chyba
             // 
             this.lbl_datum_chyba.AutoSize = true;
             this.lbl_datum_chyba.Location = new System.Drawing.Point(81, 203);
             this.lbl_datum_chyba.Name = "lbl_datum_chyba";
-            this.lbl_datum_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_datum_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_datum_chyba.TabIndex = 14;
-            this.lbl_datum_chyba.Text = "label18";
+            this.lbl_datum_chyba.Text = "Nevybráno";
             // 
             // label14
             // 
@@ -1024,9 +1037,9 @@ namespace semestralka_windows_forms
             this.lbl_email_chyba.AutoSize = true;
             this.lbl_email_chyba.Location = new System.Drawing.Point(6, 90);
             this.lbl_email_chyba.Name = "lbl_email_chyba";
-            this.lbl_email_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_email_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_email_chyba.TabIndex = 11;
-            this.lbl_email_chyba.Text = "label21";
+            this.lbl_email_chyba.Text = "Nevybráno";
             // 
             // label16
             // 
@@ -1042,9 +1055,9 @@ namespace semestralka_windows_forms
             this.lbl_jmeno_chyba.AutoSize = true;
             this.lbl_jmeno_chyba.Location = new System.Drawing.Point(6, 47);
             this.lbl_jmeno_chyba.Name = "lbl_jmeno_chyba";
-            this.lbl_jmeno_chyba.Size = new System.Drawing.Size(41, 13);
+            this.lbl_jmeno_chyba.Size = new System.Drawing.Size(59, 13);
             this.lbl_jmeno_chyba.TabIndex = 9;
-            this.lbl_jmeno_chyba.Text = "label23";
+            this.lbl_jmeno_chyba.Text = "Nevybráno";
             // 
             // label19
             // 
@@ -1091,27 +1104,29 @@ namespace semestralka_windows_forms
             this.textBox_chybna_castka.Size = new System.Drawing.Size(262, 266);
             this.textBox_chybna_castka.TabIndex = 24;
             // 
-            // button4
+            // button_export_chyba
             // 
-            this.button4.Location = new System.Drawing.Point(605, 352);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "button7";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_export_chyba.Location = new System.Drawing.Point(499, 352);
+            this.button_export_chyba.Name = "button_export_chyba";
+            this.button_export_chyba.Size = new System.Drawing.Size(75, 23);
+            this.button_export_chyba.TabIndex = 23;
+            this.button_export_chyba.Text = "Export osob";
+            this.button_export_chyba.UseVisualStyleBackColor = true;
+            this.button_export_chyba.Click += new System.EventHandler(this.button_export_chyba_Click);
             // 
-            // button11
+            // button_zkopiruj_email_chyba
             // 
-            this.button11.Location = new System.Drawing.Point(686, 352);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 22;
-            this.button11.Text = "button8";
-            this.button11.UseVisualStyleBackColor = true;
+            this.button_zkopiruj_email_chyba.Location = new System.Drawing.Point(686, 352);
+            this.button_zkopiruj_email_chyba.Name = "button_zkopiruj_email_chyba";
+            this.button_zkopiruj_email_chyba.Size = new System.Drawing.Size(75, 23);
+            this.button_zkopiruj_email_chyba.TabIndex = 22;
+            this.button_zkopiruj_email_chyba.Text = "Zkopíruj emaily";
+            this.button_zkopiruj_email_chyba.UseVisualStyleBackColor = true;
+            this.button_zkopiruj_email_chyba.Click += new System.EventHandler(this.button_zkopiruj_email_chyba_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(706, 423);
+            this.button10.Location = new System.Drawing.Point(722, 423);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(75, 23);
             this.button10.TabIndex = 15;
@@ -1123,8 +1138,12 @@ namespace semestralka_windows_forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_porovnej);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Správce plateb";
             this.groupBox_detail_vsichni.ResumeLayout(false);
@@ -1187,8 +1206,8 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label lbl_jmeno_zaplaceno;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button_export_nezaplaceno;
+        private System.Windows.Forms.Button button_zkopiruj_email_nezaplaceno;
         private System.Windows.Forms.ListBox listBox_nezaplaceno;
         private System.Windows.Forms.Label lbl_nezaplaceno_tabulka;
         private System.Windows.Forms.Button button_odebrat_databaze;
@@ -1209,8 +1228,8 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label lbl_chyba_tabulka;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox textBox_chybna_castka;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button_export_chyba;
+        private System.Windows.Forms.Button button_zkopiruj_email_chyba;
         private System.Windows.Forms.Label lbl_prijmeni_vsichni;
         private System.Windows.Forms.TextBox textBox_jmeno_vsichni;
         private System.Windows.Forms.Label label1;
@@ -1255,6 +1274,7 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lbl_jmeno_chyba;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button_porovnej;
     }
 }
 

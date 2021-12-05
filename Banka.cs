@@ -17,5 +17,9 @@ namespace semestralka_windows_forms
             Datum = platba;
             Castka = castka;
         }
+        public override string ToString()
+        {
+            return ID + " " + Datum;
+        }
     }
 }

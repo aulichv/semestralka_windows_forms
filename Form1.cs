@@ -14,8 +14,14 @@ namespace semestralka_windows_forms
     public partial class Form1 : Form
     {
         private Databaze databaze;
+        private List<Banka> zaznam_banka;
+         
+        int castka_pripravka = 2000;
+        int castka_druzstva = 2500;
+
         public Form1()
         {
+            zaznam_banka = new List<Banka>();
             InitializeComponent();
             // vytvoření složky aplikace v AppData
             string cesta = "";
@@ -32,30 +38,37 @@ namespace semestralka_windows_forms
             }
             // vytvoření databáze
             databaze = new Databaze(Path.Combine(cesta, "uzivatele.csv"));
+            lbl_platba_datum_vsichni.Text = "";
         }
 
         private void button_nacti_osoby_Click(object sender, EventArgs e)
         {
-            try
+            OpenFileDialog dialog = new OpenFileDialog();
+            //Omezení souborů, které mohou být vybrány
+            dialog.Filter = "CSV soubory (*.csv)|*.csv";
+            //Zákaz výběru více souborů
+            dialog.Multiselect = false;
+            //Pokud uživatel potvrdí
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                databaze.Nacti(',');
+                //Získá cestu  k souboru
+                String path = dialog.FileName;
+                databaze.Nacti2(';', path);
                 //Výplň listboxu všichni
                 listBox_vsichni.Items.Clear();
                 listBox_vsichni.Items.AddRange(databaze.VratVsechny());
-                //Výplň listboxu zaplaceno
+                //Výplň listboxu zaplaceno + seznam mailů
                 listBox_zaplaceno.Items.Clear();
                 listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
-                //Výplň listboxu nezaplaceno
+                textBox_zaplaceno.Text = string.Join(";", databaze.VratEmail(1));
+                //Výplň listboxu nezaplaceno + seznam mailů
                 listBox_nezaplaceno.Items.Clear();
                 listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
-                //Výplň listboxu chybí
+                textBox_nezaplaceno.Text = string.Join(";", databaze.VratEmail(0));
+                //Výplň listboxu chybí + seznam mailů
                 listBox_chyba.Items.Clear();
-                listBox_chyba.Items.AddRange(databaze.VratVybrane(3));
-            }
-            catch
-            {
-                MessageBox.Show("Databázi se nepodařilo načíst, soubor zřejmě neexisituje.",
-                    "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                listBox_chyba.Items.AddRange(databaze.VratVybrane(2));
+                textBox_chybna_castka.Text = string.Join(";", databaze.VratEmail(2));
             }
         }
 
@@ -152,43 +165,65 @@ namespace semestralka_windows_forms
             }
         }
 
+        private void button_kopiruj_email_zaplaceno_Click(object sender, EventArgs e)
+        {
+            //Zkopírování emailů do schránky
+            if (!string.IsNullOrEmpty(textBox_zaplaceno.Text))
+                Clipboard.SetText(textBox_zaplaceno.Text);
+        }
+
+        private void button_export_zaplaceno_Click(object sender, EventArgs e)
+        {
+            //Uložení platičů do .csv
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.DefaultExt = "csv";
+            saveFileDialog1.Filter = "CSV soubory (*.csv)|*.csv";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                databaze.Export(';', saveFileDialog1.FileName, 1);
+            }
+        }
+
         private void button_import_banka_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             //Omezení souborů, které mohou být vybrány
-            dialog.Filter = "CSV soubory (*.csv)|*.csv"; 
+            dialog.Filter = "CSV soubory (*.csv)|*.csv";
             //Zákaz výběru více souborů
-            dialog.Multiselect = false; 
+            dialog.Multiselect = false;
             //Pokud uživatel potvrdí
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
-                databaze.Nacti2(';',path);
-                //Výplň listboxu všichni
-                listBox_vsichni.Items.Clear();
-                listBox_vsichni.Items.AddRange(databaze.VratVsechny());
-                //Výplň listboxu zaplaceno + seznam mailů
-                listBox_zaplaceno.Items.Clear();
-                listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
-                textBox_zaplaceno.Text = string.Join(";", databaze.VratEmail(1));
-                //Výplň listboxu nezaplaceno + seznam mailů
-                listBox_nezaplaceno.Items.Clear();
-                listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
-                textBox_nezaplaceno.Text = string.Join(";", databaze.VratEmail(0));
-                //Výplň listboxu chybí + seznam mailů
-                listBox_chyba.Items.Clear();
-                listBox_chyba.Items.AddRange(databaze.VratVybrane(2));
-                textBox_chybna_castka.Text = string.Join(";",databaze.VratEmail(2));
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    string s;
+                    // čte řádek po řádku
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        // rozdělí string řádku podle středníků
+                        string[] sloupec = s.Split(';');
+                        uint id = uint.Parse(sloupec[0]);
+                        DateTime datum = DateTime.Parse(sloupec[1]);
+                        int zaplaceno = int.Parse(sloupec[2]);
+                        // záznam z výpisu s danými hodnotami
+                        Banka b = new Banka(id, datum, zaplaceno);
+                        zaznam_banka.Add(b);
+                    }
+                }
             }
         }
 
         private void listBox_chyba_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_vsichni.SelectedItem != null)
+            if (listBox_chyba.SelectedItem != null)
             {
                 //Zobrazeni detailu vybrane osoby
-                Osoba u = (Osoba)listBox_vsichni.SelectedItem;
+                Osoba u = (Osoba)listBox_chyba.SelectedItem;
                 lbl_jmeno_chyba.Text = u.Jmeno;
                 lbl_prijmeni_chyba.Text = u.Prijmeni;
                 lbl_email_chyba.Text = u.Email;
@@ -202,13 +237,33 @@ namespace semestralka_windows_forms
                 lbl_castka_chyba.Text = u.Castka.ToString();
             }
         }
+        private void button_export_chyba_Click(object sender, EventArgs e)
+        {
+            //Uložení neplatičů do .csv
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.DefaultExt = "csv";
+            saveFileDialog1.Filter = "CSV soubory (*.csv)|*.csv";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                databaze.Export(';', saveFileDialog1.FileName, 2);
+            }
+        }
 
+        private void button_zkopiruj_email_chyba_Click(object sender, EventArgs e)
+        {
+            //Zkopírování emailů do schránky
+            if (!string.IsNullOrEmpty(textBox_chybna_castka.Text))
+                Clipboard.SetText(textBox_chybna_castka.Text);
+        }
         private void listBox_nezaplaceno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_vsichni.SelectedItem != null)
+            if (listBox_nezaplaceno.SelectedItem != null)
             {
                 //Zobrazeni detailu vybrane osoby
-                Osoba u = (Osoba)listBox_vsichni.SelectedItem;
+                Osoba u = (Osoba)listBox_nezaplaceno.SelectedItem;
                 lbl_jmeno_nezaplaceno.Text = u.Jmeno;
                 lbl_prijmeni_nezaplaceno.Text = u.Prijmeni;
                 lbl_email_nezaplaceni.Text = u.Email;
@@ -220,18 +275,10 @@ namespace semestralka_windows_forms
                     lbl_skupina_nezaplaceno.Text = "Přípravka";
             }
         }
-
-        private void button_kopiruj_email_zaplaceno_Click(object sender, EventArgs e)
-        {
-            //Zkopírování emailů do schránky
-            if (!string.IsNullOrEmpty(textBox_zaplaceno.Text))
-                Clipboard.SetText(textBox_zaplaceno.Text);
-        }
-
-        private void button_export_zaplaceno_Click(object sender, EventArgs e)
+        private void button_export_nezaplaceno_Click(object sender, EventArgs e)
         {
             //Uložení neplatičů do .csv
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();   
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Title = "Save text Files";
             saveFileDialog1.DefaultExt = "csv";
             saveFileDialog1.Filter = "CSV soubory (*.csv)|*.csv";
@@ -239,7 +286,24 @@ namespace semestralka_windows_forms
             saveFileDialog1.RestoreDirectory = true;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                databaze.Export(';', saveFileDialog1.FileName,1);
+                databaze.Export(';', saveFileDialog1.FileName, 0);
+            }
+        }
+        private void button_zkopiruj_email_nezaplaceno_Click(object sender, EventArgs e)
+        {
+            //Zkopírování emailů do schránky
+            if (!string.IsNullOrEmpty(textBox_nezaplaceno.Text))
+                Clipboard.SetText(textBox_nezaplaceno.Text);
+        }
+
+        private void button_porovnej_Click(object sender, EventArgs e)
+        {
+            int index = -1;
+            for (int i = 0; i < zaznam_banka.Count; i++)
+            {
+                index = databaze.Najdi(zaznam_banka[i].ID);
+                //if (index >=0)
+                    databaze.Zaplatil(index, zaznam_banka[i].ID, zaznam_banka[i].Castka, zaznam_banka[i].Datum, castka_pripravka, castka_druzstva);
             }
         }
     }

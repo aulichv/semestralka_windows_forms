@@ -29,7 +29,7 @@ namespace semestralka_windows_forms
             zaznam_osoba.RemoveAt(index);
         }
 
-        public void Zaplatil(int index, int id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
+        public void Zaplatil(int index, uint id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
         {
             //Podle id rozhodne družstvo (lichá přípravka, sudá družstva)
             //Test přípravka
@@ -69,7 +69,7 @@ namespace semestralka_windows_forms
             }
         }
 
-        public int Najdi(int id)
+        public int Najdi(uint id)
         {
             int index = zaznam_osoba.FindIndex(os => os.ID == id);
             return index; 
