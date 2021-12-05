@@ -168,6 +168,7 @@ namespace semestralka_windows_forms
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "csv";
+            this.saveFileDialog1.Title = "Exportovat osoby";
             // 
             // openFileDialog1
             // 
@@ -1143,7 +1144,6 @@ namespace semestralka_windows_forms
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Správce plateb";
             this.groupBox_detail_vsichni.ResumeLayout(false);

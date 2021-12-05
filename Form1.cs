@@ -179,11 +179,17 @@ namespace semestralka_windows_forms
             saveFileDialog1.Title = "Save text Files";
             saveFileDialog1.DefaultExt = "csv";
             saveFileDialog1.Filter = "CSV soubory (*.csv)|*.csv";
-            saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                databaze.Export(';', saveFileDialog1.FileName, 1);
+                try
+                {
+                    databaze.Export(';', saveFileDialog1.FileName, 1);
+                }
+                catch
+                {
+                    MessageBox.Show("Vytvořte nový soubor.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -248,7 +254,14 @@ namespace semestralka_windows_forms
             saveFileDialog1.RestoreDirectory = true;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                databaze.Export(';', saveFileDialog1.FileName, 2);
+                try
+                {
+                    databaze.Export(';', saveFileDialog1.FileName, 0);
+                }
+                catch
+                {
+                    MessageBox.Show("Vytvořte nový soubor.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -286,7 +299,14 @@ namespace semestralka_windows_forms
             saveFileDialog1.RestoreDirectory = true;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                databaze.Export(';', saveFileDialog1.FileName, 0);
+                try
+                {
+                    databaze.Export(';', saveFileDialog1.FileName, 2);
+                }
+                catch
+                {
+                    MessageBox.Show("Vytvořte nový soubor.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void button_zkopiruj_email_nezaplaceno_Click(object sender, EventArgs e)
@@ -299,12 +319,20 @@ namespace semestralka_windows_forms
         private void button_porovnej_Click(object sender, EventArgs e)
         {
             int index = -1;
-            for (int i = 0; i < zaznam_banka.Count; i++)
+            try
             {
-                index = databaze.Najdi(zaznam_banka[i].ID);
-                //if (index >=0)
+                for (int i = 0; i < zaznam_banka.Count; i++)
+                {
+                    index = databaze.Najdi(zaznam_banka[i].ID);
+                    //if (index >=0)
                     databaze.Zaplatil(index, zaznam_banka[i].ID, zaznam_banka[i].Castka, zaznam_banka[i].Datum, castka_pripravka, castka_druzstva);
+                }
             }
+            catch
+            {
+                MessageBox.Show("Došlo k chybě, zkontrolujte formát vstupních dat.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         }
     }
 }
