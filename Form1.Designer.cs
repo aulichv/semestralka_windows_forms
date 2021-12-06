@@ -55,7 +55,6 @@ namespace semestralka_windows_forms
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.comboBox_oddelovac = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label34 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button_export_vsichni = new System.Windows.Forms.Button();
@@ -135,11 +134,12 @@ namespace semestralka_windows_forms
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_import_osob_cesta = new System.Windows.Forms.Label();
             this.lbl_import_plateb_cesta = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox_pridat_vsichni.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).BeginInit();
@@ -151,6 +151,8 @@ namespace semestralka_windows_forms
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_druzstva)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // button_import_banka
@@ -358,6 +360,7 @@ namespace semestralka_windows_forms
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(0, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -376,7 +379,6 @@ namespace semestralka_windows_forms
             this.tabPage4.Controls.Add(this.numericUpDown_druzstva);
             this.tabPage4.Controls.Add(this.comboBox_oddelovac);
             this.tabPage4.Controls.Add(this.pictureBox2);
-            this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.label34);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -407,16 +409,6 @@ namespace semestralka_windows_forms
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(592, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(192, 75);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // label34
             // 
@@ -1214,6 +1206,27 @@ namespace semestralka_windows_forms
             this.lbl_import_plateb_cesta.TabIndex = 10;
             this.lbl_import_plateb_cesta.Text = "label12";
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.pictureBox3);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(793, 393);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "O aplikaci";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(592, 6);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(192, 75);
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1231,7 +1244,6 @@ namespace semestralka_windows_forms
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox_pridat_vsichni.ResumeLayout(false);
@@ -1251,6 +1263,8 @@ namespace semestralka_windows_forms
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_druzstva)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1329,7 +1343,6 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.RadioButton radioButton_nezaplaceno;
         private System.Windows.Forms.RadioButton radioButton_zaplaceno;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lbl_skupina_nezaplaceno;
         private System.Windows.Forms.Label label23;
@@ -1362,6 +1375,8 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.NumericUpDown numericUpDown_pripravka;
         private System.Windows.Forms.Label lbl_import_plateb_cesta;
         private System.Windows.Forms.Label lbl_import_osob_cesta;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

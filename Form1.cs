@@ -54,7 +54,14 @@ namespace semestralka_windows_forms
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
                 lbl_import_osob_cesta.Text = path;
-                databaze.Import(oddelovac, path);               
+                try
+                {
+                    databaze.Import(oddelovac, path);
+                }
+                catch
+                {
+                    MessageBox.Show("Sobor obsahuje chybu ve formátování. Zkontrolujte formát vstupních dat dle instrukcí. (Není prázdný sloupec?)", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -190,21 +197,28 @@ namespace semestralka_windows_forms
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
                 lbl_import_plateb_cesta.Text = path;
-                using (StreamReader sr = new StreamReader(path))
+                try
                 {
-                    string s;
-                    // čte řádek po řádku
-                    while ((s = sr.ReadLine()) != null)
+                    using (StreamReader sr = new StreamReader(path))
                     {
-                        // rozdělí string řádku podle separatoru
-                        string[] sloupec = s.Split(oddelovac);
-                        uint id = uint.Parse(sloupec[0]);
-                        DateTime datum = DateTime.Parse(sloupec[1]);
-                        int zaplaceno = int.Parse(sloupec[2]);
-                        // záznam z výpisu s danými hodnotami
-                        Banka b = new Banka(id, datum, zaplaceno);
-                        zaznam_banka.Add(b);
+                        string s;
+                        // čte řádek po řádku
+                        while ((s = sr.ReadLine()) != null)
+                        {
+                            // rozdělí string řádku podle separatoru
+                            string[] sloupec = s.Split(oddelovac);
+                            uint id = uint.Parse(sloupec[0]);
+                            DateTime datum = DateTime.Parse(sloupec[1]);
+                            int zaplaceno = int.Parse(sloupec[2]);
+                            // záznam z výpisu s danými hodnotami
+                            Banka b = new Banka(id, datum, zaplaceno);
+                            zaznam_banka.Add(b);
+                        }
                     }
+                }
+                catch
+                {
+                    MessageBox.Show("Sobor obsahuje chybu ve formátování. Zkontrolujte formát vstupních dat dle instrukcí. (Není prázdný sloupec?)", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
