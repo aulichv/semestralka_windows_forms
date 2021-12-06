@@ -15,30 +15,26 @@ namespace semestralka_windows_forms
     {
         private Databaze databaze;
         private List<Banka> zaznam_banka;
-         
-        int castka_pripravka = 2000;
-        int castka_druzstva = 2500;
+        decimal castka_pripravka;
+        decimal castka_druzstva;
+        char oddelovac;
+
 
         public Form1()
         {
             zaznam_banka = new List<Banka>();
+            
             InitializeComponent();
+
+            comboBox_oddelovac.SelectedIndex = 0;
+            castka_pripravka = 2500;
+            castka_druzstva = 200;
+            oddelovac = Char.Parse(comboBox_oddelovac.Text);
             // vytvoření složky aplikace v AppData
-            string cesta = "";
-            try
-            {
-                cesta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DatabazeUzivatelu");
-                if (!Directory.Exists(cesta))
-                    Directory.CreateDirectory(cesta);
-            }
-            catch
-            {
-                MessageBox.Show("Nepodařilo se vytvořit složku " + cesta + ", zkontrolujte prosím svá oprávnění.",
-                  "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             // vytvoření databáze
-            databaze = new Databaze(Path.Combine(cesta, "uzivatele.csv"));
+            databaze = new Databaze();
             lbl_platba_datum_vsichni.Text = "";
+
         }
 
         private void button_nacti_osoby_Click(object sender, EventArgs e)
@@ -53,22 +49,7 @@ namespace semestralka_windows_forms
             {
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
-                databaze.Nacti2(';', path);
-                //Výplň listboxu všichni
-                listBox_vsichni.Items.Clear();
-                listBox_vsichni.Items.AddRange(databaze.VratVsechny());
-                //Výplň listboxu zaplaceno + seznam mailů
-                listBox_zaplaceno.Items.Clear();
-                listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
-                textBox_zaplaceno.Text = string.Join(";", databaze.VratEmail(1));
-                //Výplň listboxu nezaplaceno + seznam mailů
-                listBox_nezaplaceno.Items.Clear();
-                listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
-                textBox_nezaplaceno.Text = string.Join(";", databaze.VratEmail(0));
-                //Výplň listboxu chybí + seznam mailů
-                listBox_chyba.Items.Clear();
-                listBox_chyba.Items.AddRange(databaze.VratVybrane(2));
-                textBox_chybna_castka.Text = string.Join(";", databaze.VratEmail(2));
+                databaze.Import(oddelovac, path);               
             }
         }
 
@@ -92,12 +73,12 @@ namespace semestralka_windows_forms
                 {
                     lbl_platba.Text = "Platba neevidována";
                 }
-                else if (u.Zaplaceno == 1)
+                if (u.Zaplaceno == 1)
                 {
                     lbl_platba.Text = "Zaplaceno";
                     lbl_platba_datum_vsichni.Text = u.Datum.ToShortDateString();
                 }
-                else if (u.Zaplaceno == 2)
+                if (u.Zaplaceno == 2)
                 {
                     lbl_platba.Text = "Zaplacena chybná částka";
                     lbl_platba_datum_vsichni.Text = u.Datum.ToShortDateString();
@@ -112,12 +93,22 @@ namespace semestralka_windows_forms
             string email = textBox_email_vsichni.Text;
             uint id = (uint)numericUpDown_id_vsichni.Value;
             int zaplaceno = 0;
+            DateTime datum = DateTime.MinValue;
+            decimal castka = 0;
             if (radioButton_nezaplaceno.Checked)
                 zaplaceno = 0;
+            
             if (radioButton_zaplaceno.Checked)
+            {
                 zaplaceno = 1;
-            databaze.PridejOsobu(jmeno, prijmeni, email, id, zaplaceno);
-            listBox_vsichni.Items.Add(new Osoba(jmeno, prijmeni, email, id, zaplaceno));
+                datum = dateTimePicker.Value;
+                if (id % 2 != 0)
+                    castka = castka_pripravka;
+                if (id % 2 == 0)
+                    castka = castka_druzstva;
+            }
+            databaze.PridejOsobu(jmeno, prijmeni, email, id, zaplaceno, datum, castka);
+            listBox_vsichni.Items.Add(new Osoba(jmeno, prijmeni, email, id, zaplaceno, datum, castka));
         }
 
         private void button_odebrat_databaze_Click(object sender, EventArgs e)
@@ -132,23 +123,11 @@ namespace semestralka_windows_forms
                     "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void button_uloz_vsichni_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                databaze.Uloz(';');
-            }
-            catch
-            {
-                MessageBox.Show("Databázi se nepodařilo uložit, zkontrolujte přístupová práva k souboru.",
-                    "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-        }
 
         private void listBox_zaplaceno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox_vsichni.SelectedItem != null)
+            if (listBox_zaplaceno.SelectedItem != null)
             {
                 //Zobrazeni detailu vybrane osoby
                 Osoba u = (Osoba)listBox_vsichni.SelectedItem;
@@ -184,7 +163,7 @@ namespace semestralka_windows_forms
             {
                 try
                 {
-                    databaze.Export(';', saveFileDialog1.FileName, 1);
+                    databaze.Export(oddelovac, saveFileDialog1.FileName, 1);
                 }
                 catch
                 {
@@ -211,8 +190,8 @@ namespace semestralka_windows_forms
                     // čte řádek po řádku
                     while ((s = sr.ReadLine()) != null)
                     {
-                        // rozdělí string řádku podle středníků
-                        string[] sloupec = s.Split(';');
+                        // rozdělí string řádku podle separatoru
+                        string[] sloupec = s.Split(oddelovac);
                         uint id = uint.Parse(sloupec[0]);
                         DateTime datum = DateTime.Parse(sloupec[1]);
                         int zaplaceno = int.Parse(sloupec[2]);
@@ -256,7 +235,7 @@ namespace semestralka_windows_forms
             {
                 try
                 {
-                    databaze.Export(';', saveFileDialog1.FileName, 0);
+                    databaze.Export(oddelovac, saveFileDialog1.FileName, 0);
                 }
                 catch
                 {
@@ -301,7 +280,7 @@ namespace semestralka_windows_forms
             {
                 try
                 {
-                    databaze.Export(';', saveFileDialog1.FileName, 2);
+                    databaze.Export(oddelovac, saveFileDialog1.FileName, 2);
                 }
                 catch
                 {
@@ -333,6 +312,59 @@ namespace semestralka_windows_forms
                 MessageBox.Show("Došlo k chybě, zkontrolujte formát vstupních dat.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button_export_vsichni_Click(object sender, EventArgs e)
+        {
+            //Uložení platičů do .csv
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Save text Files";
+            saveFileDialog1.DefaultExt = "csv";
+            saveFileDialog1.Filter = "CSV soubory (*.csv)|*.csv";
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    databaze.Export(oddelovac, saveFileDialog1.FileName);
+                }
+                catch
+                {
+                    MessageBox.Show("Vytvořte nový soubor.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void tabControl1_SelectedIndexchanged(object sender, EventArgs e)
+        {
+            switch ((sender as TabControl).SelectedIndex)
+            {
+                case 0:
+                   //Stránka už je načtená
+                    break;
+                case 1:
+                    //Výplň listboxu všichni
+                    listBox_vsichni.Items.Clear();
+                    listBox_vsichni.Items.AddRange(databaze.VratVsechny());
+                    break;
+                case 2:
+                    //Výplň listboxu zaplaceno + seznam mailů
+                    listBox_zaplaceno.Items.Clear();
+                    listBox_zaplaceno.Items.AddRange(databaze.VratVybrane(1));
+                    textBox_zaplaceno.Text = string.Join(";", databaze.VratEmail(1));
+                    break;
+                case 3:
+                    //Výplň listboxu nezaplaceno + seznam mailů
+                    listBox_nezaplaceno.Items.Clear();
+                    listBox_nezaplaceno.Items.AddRange(databaze.VratVybrane(0));
+                    textBox_nezaplaceno.Text = string.Join(";", databaze.VratEmail(0));
+                    break;
+                case 4:
+                    //Výplň listboxu chybí + seznam mailů
+                    listBox_chyba.Items.Clear();
+                    listBox_chyba.Items.AddRange(databaze.VratVybrane(2));
+                    textBox_chybna_castka.Text = string.Join(";", databaze.VratEmail(2));
+                    break;
+            }
         }
     }
 }

@@ -53,13 +53,14 @@ namespace semestralka_windows_forms
             this.button_pridat_databaze = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button_porovnej = new System.Windows.Forms.Button();
+            this.comboBox_oddelovac = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label34 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button_uloz_vsichni = new System.Windows.Forms.Button();
+            this.button_export_vsichni = new System.Windows.Forms.Button();
             this.groupBox_pridat_vsichni = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.radioButton_nezaplaceno = new System.Windows.Forms.RadioButton();
             this.radioButton_zaplaceno = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -128,6 +129,7 @@ namespace semestralka_windows_forms
             this.textBox_chybna_castka = new System.Windows.Forms.TextBox();
             this.button_export_chyba = new System.Windows.Forms.Button();
             this.button_zkopiruj_email_chyba = new System.Windows.Forms.Button();
+            this.button_porovnej = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -210,7 +212,7 @@ namespace semestralka_windows_forms
             this.groupBox_detail_vsichni.Controls.Add(this.lbl_jmeno_nadpis);
             this.groupBox_detail_vsichni.Location = new System.Drawing.Point(293, 61);
             this.groupBox_detail_vsichni.Name = "groupBox_detail_vsichni";
-            this.groupBox_detail_vsichni.Size = new System.Drawing.Size(198, 231);
+            this.groupBox_detail_vsichni.Size = new System.Drawing.Size(198, 257);
             this.groupBox_detail_vsichni.TabIndex = 10;
             this.groupBox_detail_vsichni.TabStop = false;
             this.groupBox_detail_vsichni.Text = "Detail vybrané osoby:";
@@ -262,7 +264,7 @@ namespace semestralka_windows_forms
             // 
             // button_odebrat_databaze
             // 
-            this.button_odebrat_databaze.Location = new System.Drawing.Point(60, 202);
+            this.button_odebrat_databaze.Location = new System.Drawing.Point(103, 228);
             this.button_odebrat_databaze.Name = "button_odebrat_databaze";
             this.button_odebrat_databaze.Size = new System.Drawing.Size(90, 23);
             this.button_odebrat_databaze.TabIndex = 15;
@@ -335,7 +337,7 @@ namespace semestralka_windows_forms
             // 
             // button_pridat_databaze
             // 
-            this.button_pridat_databaze.Location = new System.Drawing.Point(120, 202);
+            this.button_pridat_databaze.Location = new System.Drawing.Point(120, 228);
             this.button_pridat_databaze.Name = "button_pridat_databaze";
             this.button_pridat_databaze.Size = new System.Drawing.Size(75, 23);
             this.button_pridat_databaze.TabIndex = 12;
@@ -355,9 +357,11 @@ namespace semestralka_windows_forms
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(801, 419);
             this.tabControl1.TabIndex = 14;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexchanged);
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.comboBox_oddelovac);
             this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.button_import_banka);
@@ -371,15 +375,19 @@ namespace semestralka_windows_forms
             this.tabPage4.Text = "Instrukce";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button_porovnej
+            // comboBox_oddelovac
             // 
-            this.button_porovnej.Location = new System.Drawing.Point(611, 423);
-            this.button_porovnej.Name = "button_porovnej";
-            this.button_porovnej.Size = new System.Drawing.Size(89, 23);
-            this.button_porovnej.TabIndex = 5;
-            this.button_porovnej.Text = "Kontrola plateb";
-            this.button_porovnej.UseVisualStyleBackColor = true;
-            this.button_porovnej.Click += new System.EventHandler(this.button_porovnej_Click);
+            this.comboBox_oddelovac.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox_oddelovac.FormattingEnabled = true;
+            this.comboBox_oddelovac.Items.AddRange(new object[] {
+            ";",
+            ",",
+            "|",
+            ":"});
+            this.comboBox_oddelovac.Location = new System.Drawing.Point(23, 56);
+            this.comboBox_oddelovac.Name = "comboBox_oddelovac";
+            this.comboBox_oddelovac.Size = new System.Drawing.Size(54, 21);
+            this.comboBox_oddelovac.TabIndex = 5;
             // 
             // pictureBox2
             // 
@@ -410,7 +418,7 @@ namespace semestralka_windows_forms
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button_uloz_vsichni);
+            this.tabPage1.Controls.Add(this.button_export_vsichni);
             this.tabPage1.Controls.Add(this.groupBox_pridat_vsichni);
             this.tabPage1.Controls.Add(this.listBox_vsichni);
             this.tabPage1.Controls.Add(this.lbl_vsichni_tabulka);
@@ -423,18 +431,19 @@ namespace semestralka_windows_forms
             this.tabPage1.Text = "Všichni";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button_uloz_vsichni
+            // button_export_vsichni
             // 
-            this.button_uloz_vsichni.Location = new System.Drawing.Point(659, 354);
-            this.button_uloz_vsichni.Name = "button_uloz_vsichni";
-            this.button_uloz_vsichni.Size = new System.Drawing.Size(75, 23);
-            this.button_uloz_vsichni.TabIndex = 16;
-            this.button_uloz_vsichni.Text = "Ulož";
-            this.button_uloz_vsichni.UseVisualStyleBackColor = true;
-            this.button_uloz_vsichni.Click += new System.EventHandler(this.button_uloz_vsichni_Click);
+            this.button_export_vsichni.Location = new System.Drawing.Point(638, 354);
+            this.button_export_vsichni.Name = "button_export_vsichni";
+            this.button_export_vsichni.Size = new System.Drawing.Size(96, 23);
+            this.button_export_vsichni.TabIndex = 16;
+            this.button_export_vsichni.Text = "Export osob";
+            this.button_export_vsichni.UseVisualStyleBackColor = true;
+            this.button_export_vsichni.Click += new System.EventHandler(this.button_export_vsichni_Click);
             // 
             // groupBox_pridat_vsichni
             // 
+            this.groupBox_pridat_vsichni.Controls.Add(this.dateTimePicker);
             this.groupBox_pridat_vsichni.Controls.Add(this.radioButton_nezaplaceno);
             this.groupBox_pridat_vsichni.Controls.Add(this.radioButton_zaplaceno);
             this.groupBox_pridat_vsichni.Controls.Add(this.label7);
@@ -449,10 +458,18 @@ namespace semestralka_windows_forms
             this.groupBox_pridat_vsichni.Controls.Add(this.label31);
             this.groupBox_pridat_vsichni.Location = new System.Drawing.Point(533, 61);
             this.groupBox_pridat_vsichni.Name = "groupBox_pridat_vsichni";
-            this.groupBox_pridat_vsichni.Size = new System.Drawing.Size(201, 231);
+            this.groupBox_pridat_vsichni.Size = new System.Drawing.Size(201, 257);
             this.groupBox_pridat_vsichni.TabIndex = 14;
             this.groupBox_pridat_vsichni.TabStop = false;
             this.groupBox_pridat_vsichni.Text = "Přidat novou osobu";
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(27, 192);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.RightToLeftLayout = true;
+            this.dateTimePicker.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePicker.TabIndex = 23;
             // 
             // radioButton_nezaplaceno
             // 
@@ -1125,6 +1142,16 @@ namespace semestralka_windows_forms
             this.button_zkopiruj_email_chyba.UseVisualStyleBackColor = true;
             this.button_zkopiruj_email_chyba.Click += new System.EventHandler(this.button_zkopiruj_email_chyba_Click);
             // 
+            // button_porovnej
+            // 
+            this.button_porovnej.Location = new System.Drawing.Point(611, 423);
+            this.button_porovnej.Name = "button_porovnej";
+            this.button_porovnej.Size = new System.Drawing.Size(89, 23);
+            this.button_porovnej.TabIndex = 5;
+            this.button_porovnej.Text = "Kontrola plateb";
+            this.button_porovnej.UseVisualStyleBackColor = true;
+            this.button_porovnej.Click += new System.EventHandler(this.button_porovnej_Click);
+            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(722, 423);
@@ -1244,7 +1271,7 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label Skupina;
         private System.Windows.Forms.Label lbl_id_zaplaceno;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button_uloz_vsichni;
+        private System.Windows.Forms.Button button_export_vsichni;
         private System.Windows.Forms.NumericUpDown numericUpDown_id_vsichni;
         private System.Windows.Forms.RadioButton radioButton_nezaplaceno;
         private System.Windows.Forms.RadioButton radioButton_zaplaceno;
@@ -1275,6 +1302,8 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label lbl_jmeno_chyba;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button button_porovnej;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.ComboBox comboBox_oddelovac;
     }
 }
 

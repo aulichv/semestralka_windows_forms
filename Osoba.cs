@@ -15,19 +15,28 @@ namespace semestralka_windows_forms
         //0 = nezaplaceno; 1 = zaplaceno; 2 = spatna castka
         public int Zaplaceno { get;  set; }
         public DateTime Datum { get; set; }
-        public int Castka { get; set; }
+        public decimal Castka { get; set; }
  
-        public Osoba(string jmeno, string prijmeni, string email, uint id, int zaplaceno)
+        public Osoba(string jmeno, string prijmeni, string email, uint id)
+        {
+            Jmeno = jmeno;
+            Prijmeni = prijmeni;
+            Email = email;
+            ID = id;
+            Zaplaceno = 0;
+            Datum = default;
+            Castka = 0;
+        }
+        public Osoba(string jmeno, string prijmeni, string email, uint id, int zaplaceno, DateTime datum, decimal castka)
         {
             Jmeno = jmeno;
             Prijmeni = prijmeni;
             Email = email;
             ID = id;
             Zaplaceno = zaplaceno;
-            Datum = default;
-            Castka = 0;
+            Datum = datum;
+            Castka = castka;
         }
-
         public override string ToString()
         {
             return Prijmeni + " " + Jmeno;

@@ -10,26 +10,28 @@ namespace semestralka_windows_forms
     class Databaze
     {
         private List<Osoba> zaznam_osoba;
-        private string soubor;
 
-        public Databaze(string soubor)
+        public Databaze()
         {
             zaznam_osoba = new List<Osoba>();
-            this.soubor = soubor;
         }
 
-        public void PridejOsobu(string jmeno, string prijmeni, string email, uint id, int zaplaceno)
+        public void PridejOsobu(string jmeno, string prijmeni, string email, uint id, int zaplaceno, DateTime datum, decimal castka)
         {
-            Osoba o = new Osoba(jmeno, prijmeni, email, id, zaplaceno);
+            Osoba o = new Osoba(jmeno, prijmeni, email, id, zaplaceno, datum, castka);
             zaznam_osoba.Add(o);
         }
-
+        public void PridejOsobu(string jmeno, string prijmeni, string email, uint id)
+        {
+            Osoba o = new Osoba(jmeno, prijmeni, email, id);
+            zaznam_osoba.Add(o);
+        }
         public void OdeberOsobu(int index)
         {
             zaznam_osoba.RemoveAt(index);
         }
 
-        public void Zaplatil(int index, uint id, int castka, DateTime datum, int castka_pripravka, int castka_druzstva)
+        public void Zaplatil(int index, uint id, decimal castka, DateTime datum, decimal castka_pripravka, decimal castka_druzstva)
         {
             //Podle id rozhodne družstvo (lichá přípravka, sudá družstva)
             //Test přípravka
@@ -76,6 +78,7 @@ namespace semestralka_windows_forms
             int index = zaznam_osoba.FindIndex(os => os.ID == id);
             return index; 
         }
+        //parametr 4 vrati vsechny
         public Osoba[] VratVybrane(int zaplaceno)
         {
             List<Osoba> vybrani = new List<Osoba>();
@@ -98,49 +101,8 @@ namespace semestralka_windows_forms
             }
             return email;
         }
-        public void Uloz(char oddelovac)
-        {
-            // otevření souboru pro zápis
-            using (StreamWriter sw = new StreamWriter(soubor))
-            {
-                // projetí uživatelů
-                foreach (Osoba o in zaznam_osoba)
-                {
-                    // vytvoření pole hodnot + ochrana, pokud je zadán oddělovač 
-                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '), o.Prijmeni.Replace(oddelovac, ' '), o.Email.Replace(oddelovac, ' '), o.ID.ToString(), o.Zaplaceno.ToString() };
-                    // vytvoření řádku
-                    string radek = String.Join(oddelovac.ToString(), hodnoty);
-                    // zápis řádku
-                    sw.WriteLine(radek);
-                }
-                // vyprázdnění bufferu
-                sw.Flush();
-            }
-        }
-        public void Nacti(char oddelovac)
-        {
-            zaznam_osoba.Clear();
-            // Otevře soubor pro čtení
-            using (StreamReader sr = new StreamReader(soubor))
-            {
-                string s;
-                // čte řádek po řádku
-                while ((s = sr.ReadLine()) != null)
-                {
-                    // rozdělí string řádku podle středníků
-                    string[] sloupec = s.Split(oddelovac);
-                    string jmeno = sloupec[0];
-                    string prijmeni = sloupec[1];
-                    string email = sloupec[2];
-                    uint id = uint.Parse(sloupec[3]);
-                    int zaplaceno = int.Parse(sloupec[4]);
-                    // přidá uživatele s danými hodnotami
-                    PridejOsobu(jmeno, prijmeni, email, id, zaplaceno);
-                }
-            }
-        }
 
-        public void Nacti2(char oddelovac, string path)
+        public void Import(char oddelovac, string path)
         {
             zaznam_osoba.Clear();
             // Otevře soubor pro čtení
@@ -156,9 +118,8 @@ namespace semestralka_windows_forms
                     string prijmeni = sloupec[1];
                     string email = sloupec[2];
                     uint id = uint.Parse(sloupec[3]);
-                    int zaplaceno = int.Parse(sloupec[4]);
                     // přidá uživatele s danými hodnotami
-                    PridejOsobu(jmeno, prijmeni, email, id, zaplaceno);
+                    PridejOsobu(jmeno, prijmeni, email, id);
                 }
             }
         }
@@ -171,7 +132,38 @@ namespace semestralka_windows_forms
                 foreach (Osoba o in VratVybrane(zaplaceno))
                 {
                     // vytvoření pole hodnot + ochrana, pokud je zadán oddělovač 
-                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '), o.Prijmeni.Replace(oddelovac, ' '), o.Email.Replace(oddelovac, ' '), o.ID.ToString(), o.Zaplaceno.ToString(), o.Datum.ToShortDateString(), o.Castka.ToString() };
+                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '), 
+                                         o.Prijmeni.Replace(oddelovac, ' '), 
+                                         o.Email.Replace(oddelovac, ' '), 
+                                         o.ID.ToString(), 
+                                         o.Zaplaceno.ToString(), 
+                                         o.Datum.ToShortDateString(),
+                                         o.Castka.ToString() };
+                    // vytvoření řádku
+                    string radek = String.Join(oddelovac.ToString(), hodnoty);
+                    // zápis řádku
+                    sw.WriteLine(radek);
+                }
+                // vyprázdnění bufferu
+                sw.Flush();
+            }
+        }
+        public void Export(char oddelovac, string cesta)
+        {
+            // otevření souboru pro zápis
+            using (StreamWriter sw = new StreamWriter(cesta, false))
+            {
+                //Projde vsechny osoby, ktere zaplatili
+                foreach (Osoba o in VratVsechny())
+                {
+                    // vytvoření pole hodnot + ochrana, pokud je zadán oddělovač 
+                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '),
+                                         o.Prijmeni.Replace(oddelovac, ' '),
+                                         o.Email.Replace(oddelovac, ' '),
+                                         o.ID.ToString(),
+                                         o.Zaplaceno.ToString(),
+                                         o.Datum.ToShortDateString(),
+                                         o.Castka.ToString() };
                     // vytvoření řádku
                     string radek = String.Join(oddelovac.ToString(), hodnoty);
                     // zápis řádku
