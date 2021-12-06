@@ -27,13 +27,17 @@ namespace semestralka_windows_forms
             InitializeComponent();
 
             comboBox_oddelovac.SelectedIndex = 0;
-            castka_pripravka = 2500;
-            castka_druzstva = 200;
+            numericUpDown_pripravka.Value = 2000;
+            numericUpDown_druzstva.Value = 2500;
+            castka_pripravka = numericUpDown_pripravka.Value;
+            castka_druzstva = numericUpDown_druzstva.Value;
             oddelovac = Char.Parse(comboBox_oddelovac.Text);
             // vytvoření složky aplikace v AppData
             // vytvoření databáze
             databaze = new Databaze();
             lbl_platba_datum_vsichni.Text = "";
+            lbl_import_osob_cesta.Text = "";
+            lbl_import_plateb_cesta.Text = "";
 
         }
 
@@ -49,6 +53,7 @@ namespace semestralka_windows_forms
             {
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
+                lbl_import_osob_cesta.Text = path;
                 databaze.Import(oddelovac, path);               
             }
         }
@@ -130,7 +135,7 @@ namespace semestralka_windows_forms
             if (listBox_zaplaceno.SelectedItem != null)
             {
                 //Zobrazeni detailu vybrane osoby
-                Osoba u = (Osoba)listBox_vsichni.SelectedItem;
+                Osoba u = (Osoba)listBox_zaplaceno.SelectedItem;
                 lbl_jmeno_zaplaceno.Text = u.Jmeno;
                 lbl_prijmeni_zaplaceno.Text = u.Prijmeni;
                 lbl_email_zaplaceni.Text = u.Email;
@@ -184,6 +189,7 @@ namespace semestralka_windows_forms
             {
                 //Získá cestu  k souboru
                 String path = dialog.FileName;
+                lbl_import_plateb_cesta.Text = path;
                 using (StreamReader sr = new StreamReader(path))
                 {
                     string s;
