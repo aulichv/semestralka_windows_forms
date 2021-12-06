@@ -61,6 +61,7 @@ namespace semestralka_windows_forms
                 catch
                 {
                     MessageBox.Show("Sobor obsahuje chybu ve formátování. Zkontrolujte formát vstupních dat dle instrukcí. (Není prázdný sloupec?)", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbl_import_osob_cesta.Text = "";
                 }
             }
         }
@@ -219,6 +220,7 @@ namespace semestralka_windows_forms
                 catch
                 {
                     MessageBox.Show("Sobor obsahuje chybu ve formátování. Zkontrolujte formát vstupních dat dle instrukcí. (Není prázdný sloupec?)", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbl_import_plateb_cesta.Text = "";
                 }
             }
         }

@@ -53,9 +53,16 @@ namespace semestralka_windows_forms
             this.button_pridat_databaze = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.comboBox_oddelovac = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbl_import_plateb_cesta = new System.Windows.Forms.Label();
+            this.lbl_import_osob_cesta = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown_pripravka = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_druzstva = new System.Windows.Forms.NumericUpDown();
+            this.comboBox_oddelovac = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button_export_vsichni = new System.Windows.Forms.Button();
             this.groupBox_pridat_vsichni = new System.Windows.Forms.GroupBox();
@@ -128,18 +135,20 @@ namespace semestralka_windows_forms
             this.textBox_chybna_castka = new System.Windows.Forms.TextBox();
             this.button_export_chyba = new System.Windows.Forms.Button();
             this.button_zkopiruj_email_chyba = new System.Windows.Forms.Button();
-            this.button_porovnej = new System.Windows.Forms.Button();
-            this.numericUpDown_druzstva = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_pripravka = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_import_osob_cesta = new System.Windows.Forms.Label();
-            this.lbl_import_plateb_cesta = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.button_porovnej = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_druzstva)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox_pridat_vsichni.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_id_vsichni)).BeginInit();
@@ -149,15 +158,16 @@ namespace semestralka_windows_forms
             this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_druzstva)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // button_import_banka
             // 
-            this.button_import_banka.Location = new System.Drawing.Point(593, 362);
+            this.button_import_banka.Location = new System.Drawing.Point(518, 125);
             this.button_import_banka.Name = "button_import_banka";
             this.button_import_banka.Size = new System.Drawing.Size(89, 23);
             this.button_import_banka.TabIndex = 0;
@@ -167,9 +177,9 @@ namespace semestralka_windows_forms
             // 
             // button_nacti_osoby
             // 
-            this.button_nacti_osoby.Location = new System.Drawing.Point(593, 333);
+            this.button_nacti_osoby.Location = new System.Drawing.Point(518, 15);
             this.button_nacti_osoby.Name = "button_nacti_osoby";
-            this.button_nacti_osoby.Size = new System.Drawing.Size(75, 23);
+            this.button_nacti_osoby.Size = new System.Drawing.Size(89, 23);
             this.button_nacti_osoby.TabIndex = 2;
             this.button_nacti_osoby.Text = "Import osob";
             this.button_nacti_osoby.UseVisualStyleBackColor = true;
@@ -370,6 +380,12 @@ namespace semestralka_windows_forms
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.pictureBox6);
+            this.tabPage4.Controls.Add(this.pictureBox5);
+            this.tabPage4.Controls.Add(this.pictureBox4);
+            this.tabPage4.Controls.Add(this.pictureBox2);
+            this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.lbl_import_plateb_cesta);
             this.tabPage4.Controls.Add(this.lbl_import_osob_cesta);
             this.tabPage4.Controls.Add(this.label2);
@@ -378,8 +394,8 @@ namespace semestralka_windows_forms
             this.tabPage4.Controls.Add(this.button_nacti_osoby);
             this.tabPage4.Controls.Add(this.numericUpDown_druzstva);
             this.tabPage4.Controls.Add(this.comboBox_oddelovac);
-            this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.label34);
+            this.tabPage4.Controls.Add(this.richTextBox1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -387,6 +403,77 @@ namespace semestralka_windows_forms
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Instrukce";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(339, 72);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(301, 36);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(26, 46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(291, 62);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lbl_import_plateb_cesta
+            // 
+            this.lbl_import_plateb_cesta.AutoSize = true;
+            this.lbl_import_plateb_cesta.Location = new System.Drawing.Point(613, 130);
+            this.lbl_import_plateb_cesta.Name = "lbl_import_plateb_cesta";
+            this.lbl_import_plateb_cesta.Size = new System.Drawing.Size(41, 13);
+            this.lbl_import_plateb_cesta.TabIndex = 10;
+            this.lbl_import_plateb_cesta.Text = "label12";
+            // 
+            // lbl_import_osob_cesta
+            // 
+            this.lbl_import_osob_cesta.AutoSize = true;
+            this.lbl_import_osob_cesta.Location = new System.Drawing.Point(613, 20);
+            this.lbl_import_osob_cesta.Name = "lbl_import_osob_cesta";
+            this.lbl_import_osob_cesta.Size = new System.Drawing.Size(41, 13);
+            this.lbl_import_osob_cesta.TabIndex = 9;
+            this.lbl_import_osob_cesta.Text = "label10";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 358);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Výše příspěvků přípravka";
+            // 
+            // numericUpDown_pripravka
+            // 
+            this.numericUpDown_pripravka.Location = new System.Drawing.Point(146, 356);
+            this.numericUpDown_pripravka.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_pripravka.Name = "numericUpDown_pripravka";
+            this.numericUpDown_pripravka.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown_pripravka.TabIndex = 7;
+            // 
+            // numericUpDown_druzstva
+            // 
+            this.numericUpDown_druzstva.Location = new System.Drawing.Point(146, 329);
+            this.numericUpDown_druzstva.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_druzstva.Name = "numericUpDown_druzstva";
+            this.numericUpDown_druzstva.Size = new System.Drawing.Size(83, 20);
+            this.numericUpDown_druzstva.TabIndex = 6;
             // 
             // comboBox_oddelovac
             // 
@@ -397,27 +484,29 @@ namespace semestralka_windows_forms
             ",",
             "|",
             ":"});
-            this.comboBox_oddelovac.Location = new System.Drawing.Point(385, 338);
+            this.comboBox_oddelovac.Location = new System.Drawing.Point(75, 267);
             this.comboBox_oddelovac.Name = "comboBox_oddelovac";
             this.comboBox_oddelovac.Size = new System.Drawing.Size(54, 21);
             this.comboBox_oddelovac.TabIndex = 5;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(693, 101);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
-            // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(8, 338);
+            this.label34.Location = new System.Drawing.Point(8, 331);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(125, 13);
             this.label34.TabIndex = 0;
             this.label34.Text = "Výše příspěvků družstva";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(790, 397);
+            this.richTextBox1.TabIndex = 13;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // tabPage1
             // 
@@ -600,7 +689,8 @@ namespace semestralka_windows_forms
             this.textBox_zaplaceno.Location = new System.Drawing.Point(500, 71);
             this.textBox_zaplaceno.Multiline = true;
             this.textBox_zaplaceno.Name = "textBox_zaplaceno";
-            this.textBox_zaplaceno.Size = new System.Drawing.Size(262, 266);
+            this.textBox_zaplaceno.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_zaplaceno.Size = new System.Drawing.Size(284, 266);
             this.textBox_zaplaceno.TabIndex = 16;
             // 
             // button_export_zaplaceno
@@ -891,7 +981,8 @@ namespace semestralka_windows_forms
             this.textBox_nezaplaceno.Location = new System.Drawing.Point(500, 71);
             this.textBox_nezaplaceno.Multiline = true;
             this.textBox_nezaplaceno.Name = "textBox_nezaplaceno";
-            this.textBox_nezaplaceno.Size = new System.Drawing.Size(262, 266);
+            this.textBox_nezaplaceno.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_nezaplaceno.Size = new System.Drawing.Size(284, 266);
             this.textBox_nezaplaceno.TabIndex = 17;
             // 
             // button_export_nezaplaceno
@@ -1122,7 +1213,8 @@ namespace semestralka_windows_forms
             this.textBox_chybna_castka.Location = new System.Drawing.Point(499, 69);
             this.textBox_chybna_castka.Multiline = true;
             this.textBox_chybna_castka.Name = "textBox_chybna_castka";
-            this.textBox_chybna_castka.Size = new System.Drawing.Size(262, 266);
+            this.textBox_chybna_castka.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_chybna_castka.Size = new System.Drawing.Size(285, 266);
             this.textBox_chybna_castka.TabIndex = 24;
             // 
             // button_export_chyba
@@ -1145,67 +1237,6 @@ namespace semestralka_windows_forms
             this.button_zkopiruj_email_chyba.UseVisualStyleBackColor = true;
             this.button_zkopiruj_email_chyba.Click += new System.EventHandler(this.button_zkopiruj_email_chyba_Click);
             // 
-            // button_porovnej
-            // 
-            this.button_porovnej.Location = new System.Drawing.Point(708, 423);
-            this.button_porovnej.Name = "button_porovnej";
-            this.button_porovnej.Size = new System.Drawing.Size(89, 23);
-            this.button_porovnej.TabIndex = 5;
-            this.button_porovnej.Text = "Kontrola plateb";
-            this.button_porovnej.UseVisualStyleBackColor = true;
-            this.button_porovnej.Click += new System.EventHandler(this.button_porovnej_Click);
-            // 
-            // numericUpDown_druzstva
-            // 
-            this.numericUpDown_druzstva.Location = new System.Drawing.Point(146, 336);
-            this.numericUpDown_druzstva.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_druzstva.Name = "numericUpDown_druzstva";
-            this.numericUpDown_druzstva.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown_druzstva.TabIndex = 6;
-            // 
-            // numericUpDown_pripravka
-            // 
-            this.numericUpDown_pripravka.Location = new System.Drawing.Point(146, 363);
-            this.numericUpDown_pripravka.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_pripravka.Name = "numericUpDown_pripravka";
-            this.numericUpDown_pripravka.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown_pripravka.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 365);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Výše příspěvků přípravka";
-            // 
-            // lbl_import_osob_cesta
-            // 
-            this.lbl_import_osob_cesta.AutoSize = true;
-            this.lbl_import_osob_cesta.Location = new System.Drawing.Point(674, 338);
-            this.lbl_import_osob_cesta.Name = "lbl_import_osob_cesta";
-            this.lbl_import_osob_cesta.Size = new System.Drawing.Size(41, 13);
-            this.lbl_import_osob_cesta.TabIndex = 9;
-            this.lbl_import_osob_cesta.Text = "label10";
-            // 
-            // lbl_import_plateb_cesta
-            // 
-            this.lbl_import_plateb_cesta.AutoSize = true;
-            this.lbl_import_plateb_cesta.Location = new System.Drawing.Point(689, 371);
-            this.lbl_import_plateb_cesta.Name = "lbl_import_plateb_cesta";
-            this.lbl_import_plateb_cesta.Size = new System.Drawing.Size(41, 13);
-            this.lbl_import_plateb_cesta.TabIndex = 10;
-            this.lbl_import_plateb_cesta.Text = "label12";
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.pictureBox3);
@@ -1227,6 +1258,54 @@ namespace semestralka_windows_forms
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
             // 
+            // button_porovnej
+            // 
+            this.button_porovnej.Location = new System.Drawing.Point(705, 419);
+            this.button_porovnej.Name = "button_porovnej";
+            this.button_porovnej.Size = new System.Drawing.Size(89, 23);
+            this.button_porovnej.TabIndex = 5;
+            this.button_porovnej.Text = "Kontrola plateb";
+            this.button_porovnej.UseVisualStyleBackColor = true;
+            this.button_porovnej.Click += new System.EventHandler(this.button_porovnej_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(61, 151);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(225, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 14;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(339, 46);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(298, 24);
+            this.pictureBox5.TabIndex = 15;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(378, 171);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(215, 40);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox6.TabIndex = 16;
+            this.pictureBox6.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 271);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Oddělovač:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1244,6 +1323,9 @@ namespace semestralka_windows_forms
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_druzstva)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox_pridat_vsichni.ResumeLayout(false);
@@ -1261,10 +1343,11 @@ namespace semestralka_windows_forms
             this.tabPage5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_druzstva)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).EndInit();
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1316,7 +1399,6 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.TextBox textBox_nezaplaceno;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ListBox listBox_chyba;
         private System.Windows.Forms.Label lbl_chyba_tabulka;
@@ -1377,6 +1459,13 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.Label lbl_import_osob_cesta;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label10;
     }
 }
 
