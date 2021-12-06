@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace semestralka_windows_forms
 {
@@ -76,7 +73,7 @@ namespace semestralka_windows_forms
         public int Najdi(uint id)
         {
             int index = zaznam_osoba.FindIndex(os => os.ID == id);
-            return index; 
+            return index;
         }
         //parametr 4 vrati vsechny
         public Osoba[] VratVybrane(int zaplaceno)
@@ -126,17 +123,17 @@ namespace semestralka_windows_forms
         public void Export(char oddelovac, string cesta, int zaplaceno)
         {
             // otevření souboru pro zápis
-            using (StreamWriter sw = new StreamWriter(cesta,false))
+            using (StreamWriter sw = new StreamWriter(cesta, false))
             {
                 //Projde vsechny osoby, ktere zaplatili
                 foreach (Osoba o in VratVybrane(zaplaceno))
                 {
                     // vytvoření pole hodnot + ochrana, pokud je zadán oddělovač 
-                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '), 
-                                         o.Prijmeni.Replace(oddelovac, ' '), 
-                                         o.Email.Replace(oddelovac, ' '), 
-                                         o.ID.ToString(), 
-                                         o.Zaplaceno.ToString(), 
+                    string[] hodnoty = { o.Jmeno.Replace(oddelovac, ' '),
+                                         o.Prijmeni.Replace(oddelovac, ' '),
+                                         o.Email.Replace(oddelovac, ' '),
+                                         o.ID.ToString(),
+                                         o.Zaplaceno.ToString(),
                                          o.Datum.ToShortDateString(),
                                          o.Castka.ToString() };
                     // vytvoření řádku

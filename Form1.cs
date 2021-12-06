@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace semestralka_windows_forms
 {
@@ -23,7 +17,7 @@ namespace semestralka_windows_forms
         public Form1()
         {
             zaznam_banka = new List<Banka>();
-            
+
             InitializeComponent();
 
             comboBox_oddelovac.SelectedIndex = 0;
@@ -110,7 +104,7 @@ namespace semestralka_windows_forms
             decimal castka = 0;
             if (radioButton_nezaplaceno.Checked)
                 zaplaceno = 0;
-            
+
             if (radioButton_zaplaceno.Checked)
             {
                 zaplaceno = 1;
@@ -361,7 +355,7 @@ namespace semestralka_windows_forms
             switch ((sender as TabControl).SelectedIndex)
             {
                 case 0:
-                   //Stránka už je načtená
+                    //Stránka už je načtená
                     break;
                 case 1:
                     //Výplň listboxu všichni
