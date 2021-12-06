@@ -139,7 +139,6 @@ namespace semestralka_windows_forms
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button_porovnej = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox_detail_vsichni.SuspendLayout();
@@ -161,7 +160,6 @@ namespace semestralka_windows_forms
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -382,7 +380,6 @@ namespace semestralka_windows_forms
             // 
             this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.pictureBox6);
-            this.tabPage4.Controls.Add(this.pictureBox5);
             this.tabPage4.Controls.Add(this.pictureBox4);
             this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.pictureBox1);
@@ -445,7 +442,7 @@ namespace semestralka_windows_forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 358);
+            this.label2.Location = new System.Drawing.Point(21, 364);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 13);
             this.label2.TabIndex = 8;
@@ -453,7 +450,7 @@ namespace semestralka_windows_forms
             // 
             // numericUpDown_pripravka
             // 
-            this.numericUpDown_pripravka.Location = new System.Drawing.Point(146, 356);
+            this.numericUpDown_pripravka.Location = new System.Drawing.Point(159, 362);
             this.numericUpDown_pripravka.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -465,7 +462,7 @@ namespace semestralka_windows_forms
             // 
             // numericUpDown_druzstva
             // 
-            this.numericUpDown_druzstva.Location = new System.Drawing.Point(146, 329);
+            this.numericUpDown_druzstva.Location = new System.Drawing.Point(159, 335);
             this.numericUpDown_druzstva.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -484,7 +481,7 @@ namespace semestralka_windows_forms
             ",",
             "|",
             ":"});
-            this.comboBox_oddelovac.Location = new System.Drawing.Point(75, 267);
+            this.comboBox_oddelovac.Location = new System.Drawing.Point(89, 268);
             this.comboBox_oddelovac.Name = "comboBox_oddelovac";
             this.comboBox_oddelovac.Size = new System.Drawing.Size(54, 21);
             this.comboBox_oddelovac.TabIndex = 5;
@@ -492,7 +489,7 @@ namespace semestralka_windows_forms
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(8, 331);
+            this.label34.Location = new System.Drawing.Point(21, 337);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(125, 13);
             this.label34.TabIndex = 0;
@@ -1278,15 +1275,6 @@ namespace semestralka_windows_forms
             this.pictureBox4.TabIndex = 14;
             this.pictureBox4.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(339, 46);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(298, 24);
-            this.pictureBox5.TabIndex = 15;
-            this.pictureBox5.TabStop = false;
-            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
@@ -1300,7 +1288,7 @@ namespace semestralka_windows_forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 271);
+            this.label10.Location = new System.Drawing.Point(21, 272);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 17;
@@ -1346,7 +1334,6 @@ namespace semestralka_windows_forms
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
@@ -1463,7 +1450,6 @@ namespace semestralka_windows_forms
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label10;
     }
