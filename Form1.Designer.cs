@@ -53,6 +53,9 @@ namespace semestralka_windows_forms
             this.button_pridat_databaze = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_import_plateb_cesta = new System.Windows.Forms.Label();
@@ -138,12 +141,11 @@ namespace semestralka_windows_forms
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button_porovnej = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox_detail_vsichni.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).BeginInit();
@@ -159,8 +161,6 @@ namespace semestralka_windows_forms
             this.groupBox3.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // button_import_banka
@@ -372,12 +372,13 @@ namespace semestralka_windows_forms
             this.tabControl1.Location = new System.Drawing.Point(0, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(801, 419);
+            this.tabControl1.Size = new System.Drawing.Size(801, 440);
             this.tabControl1.TabIndex = 14;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexchanged);
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button_porovnej);
             this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.pictureBox6);
             this.tabPage4.Controls.Add(this.pictureBox4);
@@ -396,10 +397,39 @@ namespace semestralka_windows_forms
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(793, 393);
+            this.tabPage4.Size = new System.Drawing.Size(793, 414);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Instrukce";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 272);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Oddělovač:";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(378, 171);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(215, 40);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox6.TabIndex = 16;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(61, 151);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(225, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 14;
+            this.pictureBox4.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -500,10 +530,10 @@ namespace semestralka_windows_forms
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox1.Location = new System.Drawing.Point(-4, 0);
+            this.richTextBox1.Location = new System.Drawing.Point(8, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(801, 397);
+            this.richTextBox1.Size = new System.Drawing.Size(789, 418);
             this.richTextBox1.TabIndex = 13;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -517,7 +547,7 @@ namespace semestralka_windows_forms
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(793, 393);
+            this.tabPage1.Size = new System.Drawing.Size(793, 414);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Všichni";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -669,7 +699,7 @@ namespace semestralka_windows_forms
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(793, 393);
+            this.tabPage2.Size = new System.Drawing.Size(793, 414);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Zaplaceno";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -862,7 +892,7 @@ namespace semestralka_windows_forms
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(793, 393);
+            this.tabPage3.Size = new System.Drawing.Size(793, 414);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Nezaplaceno";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1035,7 +1065,7 @@ namespace semestralka_windows_forms
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(793, 393);
+            this.tabPage5.Size = new System.Drawing.Size(793, 414);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Chybná částka";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1242,7 +1272,7 @@ namespace semestralka_windows_forms
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(793, 393);
+            this.tabPage6.Size = new System.Drawing.Size(793, 414);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "O aplikaci";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1259,7 +1289,7 @@ namespace semestralka_windows_forms
             // 
             // button_porovnej
             // 
-            this.button_porovnej.Location = new System.Drawing.Point(705, 419);
+            this.button_porovnej.Location = new System.Drawing.Point(701, 385);
             this.button_porovnej.Name = "button_porovnej";
             this.button_porovnej.Size = new System.Drawing.Size(89, 23);
             this.button_porovnej.TabIndex = 5;
@@ -1267,41 +1297,11 @@ namespace semestralka_windows_forms
             this.button_porovnej.UseVisualStyleBackColor = true;
             this.button_porovnej.Click += new System.EventHandler(this.button_porovnej_Click);
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(61, 151);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(225, 60);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox4.TabIndex = 14;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(378, 171);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(215, 40);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox6.TabIndex = 16;
-            this.pictureBox6.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 272);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Oddělovač:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button_porovnej);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -1312,6 +1312,8 @@ namespace semestralka_windows_forms
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pripravka)).EndInit();
@@ -1335,8 +1337,6 @@ namespace semestralka_windows_forms
             this.groupBox3.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
